@@ -1,4 +1,4 @@
-class SCCVAR {
+class PHVAR {
   static bool iscontrol = true;
 
   static String UserID = '';

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/BlocEvent/03-1-WeighBalance02Bloc.dart';
 import '../bloc/BlocEvent/03-2-WeighBalance02MSG.dart';
+import '03WeightBalance02/WeightBalance02MAIN.dart';
 
 class Page3 extends StatelessWidget {
   const Page3({Key? key}) : super(key: key);
@@ -66,13 +67,9 @@ class Page3Body extends StatelessWidget {
   String? msg;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        height: 100,
-        width: 100,
-        color: Colors.green,
-        child: const Text("PAGE 3"),
-      ),
+    return WeightBalance02MAIN(
+      data: data,
+      msg: msg,
     );
   }
 }

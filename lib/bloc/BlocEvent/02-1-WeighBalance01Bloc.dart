@@ -29,14 +29,14 @@ class WeighBalance01Bloc_Bloc
       WeighBalance01Receive toAdd, Emitter<WeighBalance01Receive> emit) async {
     WeighBalance01Receive output = WeighBalance01Receive();
 
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance01MAINcontext);
 
     final response = await Dio().post(
       server + "getWBA01",
       data: {},
     );
     if (response.statusCode == 200) {
-      Navigator.pop(WeightBalanceMAINcontext);
+      Navigator.pop(WeightBalance01MAINcontext);
       var databuff = response.data;
       if (databuff != null) {
         output.UserID =
@@ -91,7 +91,7 @@ class WeighBalance01Bloc_Bloc
       }
     } else {
       //
-      Navigator.pop(WeightBalanceMAINcontext);
+      Navigator.pop(WeightBalance01MAINcontext);
     }
 
     emit(output);

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/BlocEvent/06-1-SCCBloc.dart';
 import '../bloc/BlocEvent/06-2-SCCMSG.dart';
+import '06SCC/SCCMAIN.dart';
 
 class Page6 extends StatelessWidget {
   const Page6({Key? key}) : super(key: key);
@@ -67,12 +68,9 @@ class Page6Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        height: 100,
-        width: 100,
-        color: Colors.green,
-      ),
+    return SCCMAIN(
+      data: data,
+      msg: msg,
     );
   }
 }

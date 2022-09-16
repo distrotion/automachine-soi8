@@ -4,8 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/global.dart';
 
+import '../../page/04COC/COCMAIN.dart';
+import '../../page/04COC/COCVAR.dart';
 import '../../widget/common/Loading.dart';
 import '../cubit/NotificationEvent.dart';
+import '04-1-COCBloc.dart';
 
 //-------------------------------------------------
 String server = serverG;
@@ -57,10 +60,11 @@ class COCMSG_Bloc extends Bloc<COCMSG_Event, String> {
   }
   Future<void> _COCMSG_UserID(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(COCMAINcontext);
 
     final response = await Dio().post(
-      server + "setUserID_WBA01",
-      data: {"UserID": ''},
+      server + "setUserID_FPCOC",
+      data: {"UserID": COCVAR.UserID},
     );
     if (response.statusCode == 200) {
       var databuff = response.data;
@@ -74,16 +78,19 @@ class COCMSG_Bloc extends Bloc<COCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(COCMAINcontext);
+    COCMAINcontext.read<COCBloc_Bloc>().add(COCBloc_Read());
     emit(output);
   }
 
   Future<void> _COCMSG_Instrument(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(COCMAINcontext);
 
     final response = await Dio().post(
-      server + "setInstrumentID_WBA01",
+      server + "setInstrumentID_FPCOC",
       data: {
-        "InstrumentID": '',
+        "InstrumentID": COCVAR.InstrumentID,
       },
     );
     if (response.statusCode == 200) {
@@ -100,16 +107,19 @@ class COCMSG_Bloc extends Bloc<COCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(COCMAINcontext);
+    COCMAINcontext.read<COCBloc_Bloc>().add(COCBloc_Read());
     emit(output);
   }
 
   Future<void> _COCMSG_Barcode(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(COCMAINcontext);
 
     final response = await Dio().post(
-      server + "setBarcode_WBA01",
+      server + "setBarcode_FPCOC",
       data: {
-        "Barcode": '',
+        "Barcode": COCVAR.Barcode,
       },
     );
     if (response.statusCode == 200) {
@@ -129,14 +139,17 @@ class COCMSG_Bloc extends Bloc<COCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(COCMAINcontext);
+    COCMAINcontext.read<COCBloc_Bloc>().add(COCBloc_Read());
     emit(output);
   }
 
   Future<void> _COCMSG_Select_W1(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(COCMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_W1",
+      server + "FPCOC_W1",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -152,14 +165,17 @@ class COCMSG_Bloc extends Bloc<COCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(COCMAINcontext);
+    COCMAINcontext.read<COCBloc_Bloc>().add(COCBloc_Read());
     emit(output);
   }
 
   Future<void> _COCMSG_Select_Send(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(COCMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_SEND",
+      server + "FPCOC_SEND",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -178,14 +194,17 @@ class COCMSG_Bloc extends Bloc<COCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(COCMAINcontext);
+    COCMAINcontext.read<COCBloc_Bloc>().add(COCBloc_Read());
     emit(output);
   }
 
   Future<void> _COCMSG_Reject(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(COCMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_REJ",
+      server + "FPCOC_REJ",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -200,14 +219,17 @@ class COCMSG_Bloc extends Bloc<COCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(COCMAINcontext);
+    COCMAINcontext.read<COCBloc_Bloc>().add(COCBloc_Read());
     emit(output);
   }
 
   Future<void> _COCMSG_clear(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(COCMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_clear",
+      server + "FPCOC_clear",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -222,6 +244,8 @@ class COCMSG_Bloc extends Bloc<COCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(COCMAINcontext);
+    COCMAINcontext.read<COCBloc_Bloc>().add(COCBloc_Read());
     emit(output);
   }
 

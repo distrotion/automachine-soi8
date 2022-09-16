@@ -3,8 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/global.dart';
-import '../../page/02WeightBalance01/WeightBalance01MAIN.dart';
-import '../../page/02WeightBalance01/WeightBalance01VAR.dart';
+
+import '../../page/03WeightBalance02/WeightBalance02MAIN.dart';
+import '../../page/03WeightBalance02/WeightBalance02VAR.dart';
 import '../../widget/common/Loading.dart';
 import '../cubit/NotificationEvent.dart';
 import '03-1-WeighBalance02Bloc.dart';
@@ -96,11 +97,11 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_UserID(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "setUserID_WBA01",
+      server + "setUserID_WBA02",
       data: {
-        "UserID": WeightBalance01VAR.UserID,
+        "UserID": WeightBalance02VAR.UserID,
       },
     );
     if (response.statusCode == 200) {
@@ -115,8 +116,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
       }
     }
     //
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }
@@ -124,11 +125,11 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_Instrument(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "setInstrumentID_WBA01",
+      server + "setInstrumentID_WBA02",
       data: {
-        "InstrumentID": WeightBalance01VAR.InstrumentID,
+        "InstrumentID": WeightBalance02VAR.InstrumentID,
       },
     );
     if (response.statusCode == 200) {
@@ -144,8 +145,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
         }
       }
     }
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }
@@ -153,11 +154,11 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_Barcode(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "setBarcode_WBA01",
+      server + "setBarcode_WBA02",
       data: {
-        "Barcode": WeightBalance01VAR.Barcode,
+        "Barcode": WeightBalance02VAR.Barcode,
       },
     );
     if (response.statusCode == 200) {
@@ -176,8 +177,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
         }
       }
     }
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }
@@ -185,9 +186,9 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_Select_W1(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "WBA01_W1",
+      server + "WBA02_W1",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -202,8 +203,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
         }
       }
     }
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }
@@ -211,9 +212,9 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_Back_W1(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "WBA01_W1_BACK",
+      server + "WBA02_W1_BACK",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -228,8 +229,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
         }
       }
     }
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }
@@ -237,9 +238,9 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_Select_W2(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "WBA01_W2",
+      server + "WBA02_W2",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -254,8 +255,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
         }
       }
     }
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }
@@ -263,9 +264,9 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_Back_W2(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "WBA01_W2_BACK",
+      server + "WBA02_W2_BACK",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -280,8 +281,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
         }
       }
     }
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }
@@ -289,9 +290,9 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_Select_W3(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "WBA01_W3",
+      server + "WBA02_W3",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -306,8 +307,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
         }
       }
     }
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }
@@ -315,9 +316,9 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_Back_W3(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "WBA01_W3_BACK",
+      server + "WBA02_W3_BACK",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -332,8 +333,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
         }
       }
     }
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }
@@ -341,9 +342,9 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_Recal(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "WBA01_Recal",
+      server + "WBA02_Recal",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -358,8 +359,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
         }
       }
     }
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }
@@ -367,9 +368,9 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_Select_Send(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "WBA01_SEND",
+      server + "WBA02_SEND",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -387,8 +388,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
         }
       }
     }
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }
@@ -396,9 +397,9 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_Reject(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "WBA01_REJ",
+      server + "WBA02_REJ",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -412,8 +413,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
         }
       }
     }
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }
@@ -421,9 +422,9 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
   Future<void> _WeighBalance02MSG_clear(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
     final response = await Dio().post(
-      server + "WBA01_clear",
+      server + "WBA02_clear",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -437,8 +438,8 @@ class WeighBalance02MSG_Bloc extends Bloc<WeighBalance02MSG_Event, String> {
         }
       }
     }
-    Navigator.pop(WeightBalanceMAINcontext);
-    WeightBalanceMAINcontext.read<WeighBalance02Bloc_Bloc>()
+    Navigator.pop(WeightBalance02MAINcontext);
+    WeightBalance02MAINcontext.read<WeighBalance02Bloc_Bloc>()
         .add(WeighBalance02Bloc_Read());
     emit(output);
   }

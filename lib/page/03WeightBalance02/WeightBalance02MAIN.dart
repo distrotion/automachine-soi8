@@ -5,13 +5,13 @@ import '../../bloc/BlocEvent/03-1-WeighBalance02Bloc.dart';
 import '../../bloc/BlocEvent/03-2-WeighBalance02MSG.dart';
 import '../../widget/common/ComInputText.dart';
 import '../../widget/common/popup.dart';
-import 'WeightBalance01VAR.dart';
+import 'WeightBalance02VAR.dart';
 
 //context.read<WeighBalance02Bloc_Bloc>().add(VALUEINPUT_CLEAR());
-late BuildContext WeightBalanceMAINcontext;
+late BuildContext WeightBalance02MAINcontext;
 
-class WeightBalanceMAIN extends StatefulWidget {
-  WeightBalanceMAIN({
+class WeightBalance02MAIN extends StatefulWidget {
+  WeightBalance02MAIN({
     Key? key,
     this.data,
     this.msg,
@@ -20,10 +20,10 @@ class WeightBalanceMAIN extends StatefulWidget {
   String? msg;
 
   @override
-  State<WeightBalanceMAIN> createState() => _WeightBalanceMAINState();
+  State<WeightBalance02MAIN> createState() => _WeightBalance02MAINState();
 }
 
-class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
+class _WeightBalance02MAINState extends State<WeightBalance02MAIN> {
   @override
   void initState() {
     super.initState();
@@ -32,46 +32,46 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
 
   @override
   Widget build(BuildContext context) {
-    WeightBalanceMAINcontext = context;
-    WeightBalance01VAR.iscontrol = true;
+    WeightBalance02MAINcontext = context;
+    WeightBalance02VAR.iscontrol = true;
     String _UserID = widget.data?.UserID ?? '';
     if (_UserID != '') {
-      WeightBalance01VAR.UserID = _UserID;
+      WeightBalance02VAR.UserID = _UserID;
     }
     String _InstrumentID = widget.data?.InstrumentID ?? '';
     if (_InstrumentID != '') {
-      WeightBalance01VAR.InstrumentID = _InstrumentID;
+      WeightBalance02VAR.InstrumentID = _InstrumentID;
     }
     String _Barcode = widget.data?.Barcode ?? '';
     if (_Barcode != '') {
-      WeightBalance01VAR.Barcode = _Barcode;
+      WeightBalance02VAR.Barcode = _Barcode;
     }
 
-    WeightBalance01VAR.SPEChi = widget.data?.SPEChi ?? '';
-    WeightBalance01VAR.SPEClow = widget.data?.SPEClow ?? '';
+    WeightBalance02VAR.SPEChi = widget.data?.SPEChi ?? '';
+    WeightBalance02VAR.SPEClow = widget.data?.SPEClow ?? '';
 
-    WeightBalance01VAR.W11 = widget.data?.W11 ?? '';
-    WeightBalance01VAR.W12 = widget.data?.W12 ?? '';
-    WeightBalance01VAR.W13 = widget.data?.W13 ?? '';
-    WeightBalance01VAR.A01 = widget.data?.A01 ?? '';
+    WeightBalance02VAR.W11 = widget.data?.W11 ?? '';
+    WeightBalance02VAR.W12 = widget.data?.W12 ?? '';
+    WeightBalance02VAR.W13 = widget.data?.W13 ?? '';
+    WeightBalance02VAR.A01 = widget.data?.A01 ?? '';
 
-    WeightBalance01VAR.W21 = widget.data?.W21 ?? '';
-    WeightBalance01VAR.W22 = widget.data?.W22 ?? '';
-    WeightBalance01VAR.W23 = widget.data?.W23 ?? '';
-    WeightBalance01VAR.A02 = widget.data?.A02 ?? '';
+    WeightBalance02VAR.W21 = widget.data?.W21 ?? '';
+    WeightBalance02VAR.W22 = widget.data?.W22 ?? '';
+    WeightBalance02VAR.W23 = widget.data?.W23 ?? '';
+    WeightBalance02VAR.A02 = widget.data?.A02 ?? '';
 
-    WeightBalance01VAR.W31 = widget.data?.W31 ?? '';
-    WeightBalance01VAR.W32 = widget.data?.W32 ?? '';
-    WeightBalance01VAR.W33 = widget.data?.W33 ?? '';
-    WeightBalance01VAR.A03 = widget.data?.A03 ?? '';
+    WeightBalance02VAR.W31 = widget.data?.W31 ?? '';
+    WeightBalance02VAR.W32 = widget.data?.W32 ?? '';
+    WeightBalance02VAR.W33 = widget.data?.W33 ?? '';
+    WeightBalance02VAR.A03 = widget.data?.A03 ?? '';
 
-    WeightBalance01VAR.DataPreview = widget.data?.DataPreview ?? ''; //SEND
-    WeightBalance01VAR.SEND = widget.data?.SEND ?? '';
-    WeightBalance01VAR.Result = widget.data?.Result ?? '';
+    WeightBalance02VAR.DataPreview = widget.data?.DataPreview ?? ''; //SEND
+    WeightBalance02VAR.SEND = widget.data?.SEND ?? '';
+    WeightBalance02VAR.Result = widget.data?.Result ?? '';
 
-    WeightBalance01VAR.dip12 = widget.data?.dip12 ?? '';
-    WeightBalance01VAR.dip13 = widget.data?.dip13 ?? '';
-    WeightBalance01VAR.dip23 = widget.data?.dip23 ?? '';
+    WeightBalance02VAR.dip12 = widget.data?.dip12 ?? '';
+    WeightBalance02VAR.dip13 = widget.data?.dip13 ?? '';
+    WeightBalance02VAR.dip23 = widget.data?.dip23 ?? '';
 
     return Center(
       child: SizedBox(
@@ -103,13 +103,13 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                     sPlaceholder: "USER ID",
                     height: 40,
                     width: 200,
-                    isContr: WeightBalance01VAR.iscontrol,
+                    isContr: WeightBalance02VAR.iscontrol,
                     fnContr: (input) {
-                      WeightBalance01VAR.iscontrol = input;
+                      WeightBalance02VAR.iscontrol = input;
                     },
-                    sValue: WeightBalance01VAR.UserID,
+                    sValue: WeightBalance02VAR.UserID,
                     returnfunc: (s) {
-                      WeightBalance01VAR.UserID = s;
+                      WeightBalance02VAR.UserID = s;
                     },
                     isEnabled:
                         _UserID == '' && _InstrumentID == '' && _Barcode == '',
@@ -146,13 +146,13 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                     sPlaceholder: "INSTRUMENT",
                     height: 40,
                     width: 200,
-                    isContr: WeightBalance01VAR.iscontrol,
+                    isContr: WeightBalance02VAR.iscontrol,
                     fnContr: (input) {
-                      WeightBalance01VAR.iscontrol = input;
+                      WeightBalance02VAR.iscontrol = input;
                     },
-                    sValue: WeightBalance01VAR.InstrumentID,
+                    sValue: WeightBalance02VAR.InstrumentID,
                     returnfunc: (s) {
-                      WeightBalance01VAR.InstrumentID = s;
+                      WeightBalance02VAR.InstrumentID = s;
                     },
                     isEnabled:
                         _UserID != '' && _InstrumentID == '' && _Barcode == '',
@@ -189,13 +189,13 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                     sPlaceholder: "BARCODE",
                     height: 40,
                     width: 200,
-                    isContr: WeightBalance01VAR.iscontrol,
+                    isContr: WeightBalance02VAR.iscontrol,
                     fnContr: (input) {
-                      WeightBalance01VAR.iscontrol = input;
+                      WeightBalance02VAR.iscontrol = input;
                     },
-                    sValue: WeightBalance01VAR.Barcode,
+                    sValue: WeightBalance02VAR.Barcode,
                     returnfunc: (s) {
-                      WeightBalance01VAR.Barcode = s;
+                      WeightBalance02VAR.Barcode = s;
                     },
                     isEnabled:
                         _UserID != '' && _InstrumentID != '' && _Barcode == '',
@@ -205,7 +205,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       if (_UserID != '' &&
                           _InstrumentID != '' &&
                           _Barcode == '') {
-                        if (WeightBalance01VAR.Barcode.length == 18) {
+                        if (WeightBalance02VAR.Barcode.length == 18) {
                           context
                               .read<WeighBalance02MSG_Bloc>()
                               .add(WeighBalance02MSG_Barcode());
@@ -243,7 +243,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                         border: Border.all(color: Colors.blue, width: 2),
                       ),
                       child:
-                          Center(child: Text(WeightBalance01VAR.DataPreview)),
+                          Center(child: Text(WeightBalance02VAR.DataPreview)),
                     ),
                     InkWell(
                       onTap: () {
@@ -281,7 +281,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                     children: [
                       InkWell(
                         onTap: () {
-                          if (WeightBalance01VAR.SEND == '') {
+                          if (WeightBalance02VAR.SEND == '') {
                             context
                                 .read<WeighBalance02MSG_Bloc>()
                                 .add(WeighBalance02MSG_Select_W1());
@@ -290,7 +290,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                         child: Container(
                           height: 40,
                           width: 95,
-                          color: WeightBalance01VAR.SEND == ''
+                          color: WeightBalance02VAR.SEND == ''
                               ? Colors.green
                               : Colors.grey.shade400,
                           child: const Center(
@@ -305,7 +305,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                         height: 40,
                         width: 95,
                         color: Colors.blue,
-                        child: Center(child: Text(WeightBalance01VAR.W11)),
+                        child: Center(child: Text(WeightBalance02VAR.W11)),
                       ),
                       const SizedBox(
                         height: 5,
@@ -314,7 +314,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                         height: 40,
                         width: 95,
                         color: Colors.blue,
-                        child: Center(child: Text(WeightBalance01VAR.W12)),
+                        child: Center(child: Text(WeightBalance02VAR.W12)),
                       ),
                       const SizedBox(
                         height: 5,
@@ -323,7 +323,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                         height: 40,
                         width: 95,
                         color: Colors.blue,
-                        child: Center(child: Text(WeightBalance01VAR.W13)),
+                        child: Center(child: Text(WeightBalance02VAR.W13)),
                       ),
                       const SizedBox(
                         height: 5,
@@ -332,14 +332,14 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                         height: 40,
                         width: 95,
                         color: Colors.green.shade200,
-                        child: Center(child: Text(WeightBalance01VAR.A01)),
+                        child: Center(child: Text(WeightBalance02VAR.A01)),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       InkWell(
                         onTap: () {
-                          if (WeightBalance01VAR.SEND == '') {
+                          if (WeightBalance02VAR.SEND == '') {
                             context
                                 .read<WeighBalance02MSG_Bloc>()
                                 .add(WeighBalance02MSG_Back_W1());
@@ -348,7 +348,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                         child: Container(
                           height: 40,
                           width: 95,
-                          color: WeightBalance01VAR.SEND == ''
+                          color: WeightBalance02VAR.SEND == ''
                               ? Colors.orange
                               : Colors.grey.shade400,
                           child: const Center(
@@ -362,7 +362,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                   Column(children: [
                     InkWell(
                       onTap: () {
-                        if (WeightBalance01VAR.SEND == '') {
+                        if (WeightBalance02VAR.SEND == '') {
                           context
                               .read<WeighBalance02MSG_Bloc>()
                               .add(WeighBalance02MSG_Select_W2());
@@ -371,7 +371,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       child: Container(
                         height: 40,
                         width: 95,
-                        color: WeightBalance01VAR.SEND == ''
+                        color: WeightBalance02VAR.SEND == ''
                             ? Colors.green
                             : Colors.grey.shade400,
                         child: const Center(
@@ -386,7 +386,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       height: 40,
                       width: 95,
                       color: Colors.blue,
-                      child: Center(child: Text(WeightBalance01VAR.W21)),
+                      child: Center(child: Text(WeightBalance02VAR.W21)),
                     ),
                     const SizedBox(
                       height: 5,
@@ -395,7 +395,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       height: 40,
                       width: 95,
                       color: Colors.blue,
-                      child: Center(child: Text(WeightBalance01VAR.W22)),
+                      child: Center(child: Text(WeightBalance02VAR.W22)),
                     ),
                     const SizedBox(
                       height: 5,
@@ -404,7 +404,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       height: 40,
                       width: 95,
                       color: Colors.blue,
-                      child: Center(child: Text(WeightBalance01VAR.W23)),
+                      child: Center(child: Text(WeightBalance02VAR.W23)),
                     ),
                     const SizedBox(
                       height: 5,
@@ -413,14 +413,14 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       height: 40,
                       width: 95,
                       color: Colors.green.shade200,
-                      child: Center(child: Text(WeightBalance01VAR.A02)),
+                      child: Center(child: Text(WeightBalance02VAR.A02)),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     InkWell(
                       onTap: () {
-                        if (WeightBalance01VAR.SEND == '') {
+                        if (WeightBalance02VAR.SEND == '') {
                           context
                               .read<WeighBalance02MSG_Bloc>()
                               .add(WeighBalance02MSG_Back_W2());
@@ -429,7 +429,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       child: Container(
                         height: 40,
                         width: 95,
-                        color: WeightBalance01VAR.SEND == ''
+                        color: WeightBalance02VAR.SEND == ''
                             ? Colors.orange
                             : Colors.grey.shade400,
                         child: const Center(
@@ -442,7 +442,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                   Column(children: [
                     InkWell(
                       onTap: () {
-                        if (WeightBalance01VAR.SEND == '') {
+                        if (WeightBalance02VAR.SEND == '') {
                           context
                               .read<WeighBalance02MSG_Bloc>()
                               .add(WeighBalance02MSG_Select_W3());
@@ -451,7 +451,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       child: Container(
                         height: 40,
                         width: 95,
-                        color: WeightBalance01VAR.SEND == ''
+                        color: WeightBalance02VAR.SEND == ''
                             ? Colors.green
                             : Colors.grey.shade400,
                         child: const Center(
@@ -466,7 +466,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       height: 40,
                       width: 95,
                       color: Colors.blue,
-                      child: Center(child: Text(WeightBalance01VAR.W31)),
+                      child: Center(child: Text(WeightBalance02VAR.W31)),
                     ),
                     const SizedBox(
                       height: 5,
@@ -475,7 +475,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       height: 40,
                       width: 95,
                       color: Colors.blue,
-                      child: Center(child: Text(WeightBalance01VAR.W32)),
+                      child: Center(child: Text(WeightBalance02VAR.W32)),
                     ),
                     const SizedBox(
                       height: 5,
@@ -484,7 +484,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       height: 40,
                       width: 95,
                       color: Colors.blue,
-                      child: Center(child: Text(WeightBalance01VAR.W33)),
+                      child: Center(child: Text(WeightBalance02VAR.W33)),
                     ),
                     const SizedBox(
                       height: 5,
@@ -493,14 +493,14 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       height: 40,
                       width: 95,
                       color: Colors.green.shade200,
-                      child: Center(child: Text(WeightBalance01VAR.A03)),
+                      child: Center(child: Text(WeightBalance02VAR.A03)),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     InkWell(
                       onTap: () {
-                        if (WeightBalance01VAR.SEND == '') {
+                        if (WeightBalance02VAR.SEND == '') {
                           context
                               .read<WeighBalance02MSG_Bloc>()
                               .add(WeighBalance02MSG_Back_W3());
@@ -509,7 +509,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                       child: Container(
                         height: 40,
                         width: 95,
-                        color: WeightBalance01VAR.SEND == ''
+                        color: WeightBalance02VAR.SEND == ''
                             ? Colors.orange
                             : Colors.grey.shade400,
                         child: const Center(
@@ -529,25 +529,25 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                     flex: 2,
                     child: Column(
                       children: [
-                        if (WeightBalance01VAR.dip12 != '') ...[
+                        if (WeightBalance02VAR.dip12 != '') ...[
                           Container(
                             height: 40,
                             color: Colors.green,
                             child: Center(
                               child: Text(
-                                "dip 1-2 : " + WeightBalance01VAR.dip12,
+                                "dip 1-2 : " + WeightBalance02VAR.dip12,
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),
                           ),
                         ],
-                        if (WeightBalance01VAR.dip13 != '') ...[
+                        if (WeightBalance02VAR.dip13 != '') ...[
                           Container(
                             height: 40,
                             color: Colors.green,
                             child: Center(
                               child: Text(
-                                "dip 1-3 : " + WeightBalance01VAR.dip13,
+                                "dip 1-3 : " + WeightBalance02VAR.dip13,
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),
@@ -557,7 +557,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                             color: Colors.green,
                             child: Center(
                               child: Text(
-                                "dip 2-3 : " + WeightBalance01VAR.dip23,
+                                "dip 2-3 : " + WeightBalance02VAR.dip23,
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),
@@ -570,16 +570,16 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                     flex: 1,
                     child: InkWell(
                       onTap: () {
-                        if (WeightBalance01VAR.SEND == '') {
+                        if (WeightBalance02VAR.SEND == '') {
                           context
                               .read<WeighBalance02MSG_Bloc>()
                               .add(WeighBalance02MSG_Recal());
                         }
                       },
                       child: Container(
-                        height: WeightBalance01VAR.dip13 != ''
+                        height: WeightBalance02VAR.dip13 != ''
                             ? 120
-                            : WeightBalance01VAR.dip12 != ''
+                            : WeightBalance02VAR.dip12 != ''
                                 ? 40
                                 : 0,
                         color: Colors.amber,
@@ -610,14 +610,14 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                             height: 5,
                           ),
                           const Center(child: Text('SPEC')),
-                          if (WeightBalance01VAR.SPEChi != '')
+                          if (WeightBalance02VAR.SPEChi != '')
                             Center(
                                 child:
-                                    Text('MAX:' + WeightBalance01VAR.SPEChi)),
-                          if (WeightBalance01VAR.SPEClow != '')
+                                    Text('MAX:' + WeightBalance02VAR.SPEChi)),
+                          if (WeightBalance02VAR.SPEClow != '')
                             Center(
                                 child:
-                                    Text('MIN:' + WeightBalance01VAR.SPEClow)),
+                                    Text('MIN:' + WeightBalance02VAR.SPEClow)),
                         ],
                       ),
                     ),
@@ -633,7 +633,7 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
                             height: 5,
                           ),
                           const Center(child: Text('RESULT')),
-                          Center(child: Text(WeightBalance01VAR.Result)),
+                          Center(child: Text(WeightBalance02VAR.Result)),
                         ],
                       ),
                     ),
@@ -665,13 +665,13 @@ class _WeightBalanceMAINState extends State<WeightBalanceMAIN> {
               ),
               InkWell(
                 onTap: () {
-                  WeightBalance01VAR.iscontrol = true;
+                  WeightBalance02VAR.iscontrol = true;
                   context
                       .read<WeighBalance02MSG_Bloc>()
                       .add(WeighBalance02MSG_clear());
-                  WeightBalance01VAR.UserID = '';
-                  WeightBalance01VAR.InstrumentID = '';
-                  WeightBalance01VAR.Barcode = '';
+                  WeightBalance02VAR.UserID = '';
+                  WeightBalance02VAR.InstrumentID = '';
+                  WeightBalance02VAR.Barcode = '';
                   setState(() {});
                 },
                 child: Container(

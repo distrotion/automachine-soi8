@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 
 import '../../data/global.dart';
-import '../../page/02WeightBalance01/WeightBalance01MAIN.dart';
+
+import '../../page/03WeightBalance02/WeightBalance02MAIN.dart';
 import '../../widget/common/Loading.dart';
 //-------------------------------------------------
 
@@ -29,14 +30,14 @@ class WeighBalance02Bloc_Bloc
       WeighBalance02Receive toAdd, Emitter<WeighBalance02Receive> emit) async {
     WeighBalance02Receive output = WeighBalance02Receive();
 
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(WeightBalance02MAINcontext);
 
     final response = await Dio().post(
-      server + "getWBA01",
+      server + "getWBA02",
       data: {},
     );
     if (response.statusCode == 200) {
-      Navigator.pop(WeightBalanceMAINcontext);
+      Navigator.pop(WeightBalance02MAINcontext);
       var databuff = response.data;
       if (databuff != null) {
         output.UserID =
@@ -91,7 +92,7 @@ class WeighBalance02Bloc_Bloc
       }
     } else {
       //
-      Navigator.pop(WeightBalanceMAINcontext);
+      Navigator.pop(WeightBalance02MAINcontext);
     }
 
     emit(output);

@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 
 import '../../data/global.dart';
-import '../../page/02WeightBalance01/WeightBalance01MAIN.dart';
+
+import '../../page/07PH/SCCMAIN.dart';
 import '../../widget/common/Loading.dart';
 //-------------------------------------------------
 
@@ -27,14 +28,14 @@ class PHBloc_Bloc extends Bloc<PHBloc_Event, PHReceive> {
   Future<void> _PHBloc_Read(PHReceive toAdd, Emitter<PHReceive> emit) async {
     PHReceive output = PHReceive();
 
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(PHMAINcontext);
 
     final response = await Dio().post(
-      server + "getWBA01",
+      server + "getPH",
       data: {},
     );
     if (response.statusCode == 200) {
-      Navigator.pop(WeightBalanceMAINcontext);
+      Navigator.pop(PHMAINcontext);
       var databuff = response.data;
       if (databuff != null) {
         output.UserID =
@@ -56,7 +57,7 @@ class PHBloc_Bloc extends Bloc<PHBloc_Event, PHReceive> {
       }
     } else {
       //
-      Navigator.pop(WeightBalanceMAINcontext);
+      Navigator.pop(PHMAINcontext);
     }
 
     emit(output);

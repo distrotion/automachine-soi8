@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 
 import '../../data/global.dart';
-import '../../page/02WeightBalance01/WeightBalance01MAIN.dart';
+
+import '../../page/06SCC/SCCMAIN.dart';
 import '../../widget/common/Loading.dart';
 //-------------------------------------------------
 
@@ -27,14 +28,14 @@ class SCCBloc_Bloc extends Bloc<SCCBloc_Event, SCCReceive> {
   Future<void> _SCCBloc_Read(SCCReceive toAdd, Emitter<SCCReceive> emit) async {
     SCCReceive output = SCCReceive();
 
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(SCCMAINcontext);
 
     final response = await Dio().post(
-      server + "getWBA01",
+      server + "getFPSCC",
       data: {},
     );
     if (response.statusCode == 200) {
-      Navigator.pop(WeightBalanceMAINcontext);
+      Navigator.pop(SCCMAINcontext);
       var databuff = response.data;
       if (databuff != null) {
         output.UserID =
@@ -56,7 +57,7 @@ class SCCBloc_Bloc extends Bloc<SCCBloc_Event, SCCReceive> {
       }
     } else {
       //
-      Navigator.pop(WeightBalanceMAINcontext);
+      Navigator.pop(SCCMAINcontext);
     }
 
     emit(output);

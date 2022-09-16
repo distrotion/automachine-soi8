@@ -27,7 +27,7 @@ class _SCCMAINState extends State<SCCMAIN> {
   @override
   void initState() {
     super.initState();
-    // context.read<SCCBloc_Bloc>().add(SCCBloc_Read());
+    context.read<SCCBloc_Bloc>().add(SCCBloc_Read());
   }
 
   @override
@@ -286,24 +286,24 @@ class _SCCMAINState extends State<SCCMAIN> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 5,
-              ),
-              InkWell(
-                onTap: () {
-                  context.read<SCCMSG_Bloc>().add(SCCMSG_Select_Send());
-                },
-                child: Container(
-                  height: 62,
-                  color: Colors.green,
-                  child: const Center(
-                    child: Text(
-                      "SEND DATA",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
+              // const SizedBox(
+              //   height: 5,
+              // ),
+              // InkWell(
+              //   onTap: () {
+              //     context.read<SCCMSG_Bloc>().add(SCCMSG_Select_Send());
+              //   },
+              //   child: Container(
+              //     height: 62,
+              //     color: Colors.green,
+              //     child: const Center(
+              //       child: Text(
+              //         "SEND DATA",
+              //         style: TextStyle(color: Colors.white),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               const SizedBox(
                 height: 5,
               ),
@@ -333,6 +333,10 @@ class _SCCMAINState extends State<SCCMAIN> {
               InkWell(
                 onTap: () {
                   context.read<SCCMSG_Bloc>().add(SCCMSG_Reject());
+                  SCCVAR.UserID = '';
+                  SCCVAR.InstrumentID = '';
+                  SCCVAR.Barcode = '';
+                  setState(() {});
                 },
                 child: Container(
                   height: 30,

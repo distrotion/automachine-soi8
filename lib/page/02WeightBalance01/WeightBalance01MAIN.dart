@@ -8,7 +8,7 @@ import '../../widget/common/popup.dart';
 import 'WeightBalance01VAR.dart';
 
 //context.read<WeighBalance01Bloc_Bloc>().add(VALUEINPUT_CLEAR());
-late BuildContext WeightBalanceMAINcontext;
+late BuildContext WeightBalance01MAINcontext;
 
 class WeightBalance01MAIN extends StatefulWidget {
   WeightBalance01MAIN({
@@ -32,7 +32,7 @@ class _WeightBalance01MAINState extends State<WeightBalance01MAIN> {
 
   @override
   Widget build(BuildContext context) {
-    WeightBalanceMAINcontext = context;
+    WeightBalance01MAINcontext = context;
     WeightBalance01VAR.iscontrol = true;
     String _UserID = widget.data?.UserID ?? '';
     if (_UserID != '') {

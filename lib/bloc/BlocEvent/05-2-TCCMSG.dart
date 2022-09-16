@@ -4,8 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/global.dart';
 
+import '../../page/05TCC/TCCMAIN.dart';
 import '../../widget/common/Loading.dart';
 import '../cubit/NotificationEvent.dart';
+import '05-1-TCCBloc.dart';
 
 //-------------------------------------------------
 String server = serverG;
@@ -57,9 +59,10 @@ class TCCMSG_Bloc extends Bloc<TCCMSG_Event, String> {
   }
   Future<void> _TCCMSG_UserID(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(TCCMAINcontext);
 
     final response = await Dio().post(
-      server + "setUserID_WBA01",
+      server + "setUserID_FPTCC",
       data: {"UserID": ''},
     );
     if (response.statusCode == 200) {
@@ -74,14 +77,17 @@ class TCCMSG_Bloc extends Bloc<TCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(TCCMAINcontext);
+    TCCMAINcontext.read<TCCBloc_Bloc>().add(TCCBloc_Read());
     emit(output);
   }
 
   Future<void> _TCCMSG_Instrument(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(TCCMAINcontext);
 
     final response = await Dio().post(
-      server + "setInstrumentID_WBA01",
+      server + "setInstrumentID_FPTCC",
       data: {
         "InstrumentID": '',
       },
@@ -100,14 +106,17 @@ class TCCMSG_Bloc extends Bloc<TCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(TCCMAINcontext);
+    TCCMAINcontext.read<TCCBloc_Bloc>().add(TCCBloc_Read());
     emit(output);
   }
 
   Future<void> _TCCMSG_Barcode(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(TCCMAINcontext);
 
     final response = await Dio().post(
-      server + "setBarcode_WBA01",
+      server + "setBarcode_FPTCC",
       data: {
         "Barcode": '',
       },
@@ -129,14 +138,17 @@ class TCCMSG_Bloc extends Bloc<TCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(TCCMAINcontext);
+    TCCMAINcontext.read<TCCBloc_Bloc>().add(TCCBloc_Read());
     emit(output);
   }
 
   Future<void> _TCCMSG_Select_W1(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(TCCMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_W1",
+      server + "FPTCC_W1",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -152,14 +164,17 @@ class TCCMSG_Bloc extends Bloc<TCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(TCCMAINcontext);
+    TCCMAINcontext.read<TCCBloc_Bloc>().add(TCCBloc_Read());
     emit(output);
   }
 
   Future<void> _TCCMSG_Select_Send(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(TCCMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_SEND",
+      server + "FPTCC_SEND",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -178,14 +193,17 @@ class TCCMSG_Bloc extends Bloc<TCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(TCCMAINcontext);
+    TCCMAINcontext.read<TCCBloc_Bloc>().add(TCCBloc_Read());
     emit(output);
   }
 
   Future<void> _TCCMSG_Reject(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(TCCMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_REJ",
+      server + "FPTCC_REJ",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -200,14 +218,17 @@ class TCCMSG_Bloc extends Bloc<TCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(TCCMAINcontext);
+    TCCMAINcontext.read<TCCBloc_Bloc>().add(TCCBloc_Read());
     emit(output);
   }
 
   Future<void> _TCCMSG_clear(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(TCCMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_clear",
+      server + "FPTCC_clear",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -222,6 +243,8 @@ class TCCMSG_Bloc extends Bloc<TCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(TCCMAINcontext);
+    TCCMAINcontext.read<TCCBloc_Bloc>().add(TCCBloc_Read());
     emit(output);
   }
 

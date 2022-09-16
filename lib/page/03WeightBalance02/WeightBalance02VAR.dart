@@ -1,4 +1,4 @@
-class WeightBalance01VAR {
+class WeightBalance02VAR {
   static bool iscontrol = true;
 
   static String UserID = '';

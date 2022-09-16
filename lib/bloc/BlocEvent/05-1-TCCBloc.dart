@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 
 import '../../data/global.dart';
-import '../../page/02WeightBalance01/WeightBalance01MAIN.dart';
+
+import '../../page/05TCC/TCCMAIN.dart';
 import '../../widget/common/Loading.dart';
 //-------------------------------------------------
 
@@ -27,14 +28,14 @@ class TCCBloc_Bloc extends Bloc<TCCBloc_Event, TCCReceive> {
   Future<void> _TCCBloc_Read(TCCReceive toAdd, Emitter<TCCReceive> emit) async {
     TCCReceive output = TCCReceive();
 
-    FreeLoading(WeightBalanceMAINcontext);
+    FreeLoading(TCCMAINcontext);
 
     final response = await Dio().post(
-      server + "getWBA01",
+      server + "getFPTCC",
       data: {},
     );
     if (response.statusCode == 200) {
-      Navigator.pop(WeightBalanceMAINcontext);
+      Navigator.pop(TCCMAINcontext);
       var databuff = response.data;
       if (databuff != null) {
         output.UserID =
@@ -56,7 +57,7 @@ class TCCBloc_Bloc extends Bloc<TCCBloc_Event, TCCReceive> {
       }
     } else {
       //
-      Navigator.pop(WeightBalanceMAINcontext);
+      Navigator.pop(TCCMAINcontext);
     }
 
     emit(output);

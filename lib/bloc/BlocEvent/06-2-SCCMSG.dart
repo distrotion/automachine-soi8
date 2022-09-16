@@ -4,8 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/global.dart';
 
+import '../../page/06SCC/SCCMAIN.dart';
 import '../../widget/common/Loading.dart';
 import '../cubit/NotificationEvent.dart';
+import '06-1-SCCBloc.dart';
 
 //-------------------------------------------------
 String server = serverG;
@@ -57,9 +59,10 @@ class SCCMSG_Bloc extends Bloc<SCCMSG_Event, String> {
   }
   Future<void> _SCCMSG_UserID(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(SCCMAINcontext);
 
     final response = await Dio().post(
-      server + "setUserID_WBA01",
+      server + "setUserID_FPSCC",
       data: {"UserID": ''},
     );
     if (response.statusCode == 200) {
@@ -74,14 +77,17 @@ class SCCMSG_Bloc extends Bloc<SCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(SCCMAINcontext);
+    SCCMAINcontext.read<SCCBloc_Bloc>().add(SCCBloc_Read());
     emit(output);
   }
 
   Future<void> _SCCMSG_Instrument(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(SCCMAINcontext);
 
     final response = await Dio().post(
-      server + "setInstrumentID_WBA01",
+      server + "setInstrumentID_FPSCC",
       data: {
         "InstrumentID": '',
       },
@@ -100,14 +106,17 @@ class SCCMSG_Bloc extends Bloc<SCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(SCCMAINcontext);
+    SCCMAINcontext.read<SCCBloc_Bloc>().add(SCCBloc_Read());
     emit(output);
   }
 
   Future<void> _SCCMSG_Barcode(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(SCCMAINcontext);
 
     final response = await Dio().post(
-      server + "setBarcode_WBA01",
+      server + "setBarcode_FPSCC",
       data: {
         "Barcode": '',
       },
@@ -129,14 +138,17 @@ class SCCMSG_Bloc extends Bloc<SCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(SCCMAINcontext);
+    SCCMAINcontext.read<SCCBloc_Bloc>().add(SCCBloc_Read());
     emit(output);
   }
 
   Future<void> _SCCMSG_Select_W1(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(SCCMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_W1",
+      server + "FPSCC_W1",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -152,14 +164,17 @@ class SCCMSG_Bloc extends Bloc<SCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(SCCMAINcontext);
+    SCCMAINcontext.read<SCCBloc_Bloc>().add(SCCBloc_Read());
     emit(output);
   }
 
   Future<void> _SCCMSG_Select_Send(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(SCCMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_SEND",
+      server + "FPSCC_SEND",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -178,14 +193,17 @@ class SCCMSG_Bloc extends Bloc<SCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(SCCMAINcontext);
+    SCCMAINcontext.read<SCCBloc_Bloc>().add(SCCBloc_Read());
     emit(output);
   }
 
   Future<void> _SCCMSG_Reject(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(SCCMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_REJ",
+      server + "FPSCC_REJ",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -200,14 +218,17 @@ class SCCMSG_Bloc extends Bloc<SCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(SCCMAINcontext);
+    SCCMAINcontext.read<SCCBloc_Bloc>().add(SCCBloc_Read());
     emit(output);
   }
 
   Future<void> _SCCMSG_clear(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(SCCMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_clear",
+      server + "FPSCC_clear",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -222,6 +243,8 @@ class SCCMSG_Bloc extends Bloc<SCCMSG_Event, String> {
       }
     }
 
+    Navigator.pop(SCCMAINcontext);
+    SCCMAINcontext.read<SCCBloc_Bloc>().add(SCCBloc_Read());
     emit(output);
   }
 

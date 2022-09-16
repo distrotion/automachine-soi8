@@ -4,8 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/global.dart';
 
+import '../../page/07PH/SCCMAIN.dart';
+import '../../page/07PH/SCCVAR.dart';
 import '../../widget/common/Loading.dart';
 import '../cubit/NotificationEvent.dart';
+import '07-1-PHBloc.dart';
 
 //-------------------------------------------------
 String server = serverG;
@@ -35,6 +38,7 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
     on<PHMSG_Instrument>((event, emit) {
       return _PHMSG_Instrument('', emit);
     });
+
     on<PHMSG_Barcode>((event, emit) {
       return _PHMSG_Barcode('', emit);
     });
@@ -57,10 +61,11 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
   }
   Future<void> _PHMSG_UserID(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(PHMAINcontext);
 
     final response = await Dio().post(
-      server + "setUserID_WBA01",
-      data: {"UserID": ''},
+      server + "setUserID_PH",
+      data: {"UserID": PHVAR.UserID},
     );
     if (response.statusCode == 200) {
       var databuff = response.data;
@@ -74,16 +79,19 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
+    Navigator.pop(PHMAINcontext);
+    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
     emit(output);
   }
 
   Future<void> _PHMSG_Instrument(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(PHMAINcontext);
 
     final response = await Dio().post(
-      server + "setInstrumentID_WBA01",
+      server + "setInstrumentID_PH",
       data: {
-        "InstrumentID": '',
+        "InstrumentID": PHVAR.InstrumentID,
       },
     );
     if (response.statusCode == 200) {
@@ -100,16 +108,19 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
+    Navigator.pop(PHMAINcontext);
+    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
     emit(output);
   }
 
   Future<void> _PHMSG_Barcode(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(PHMAINcontext);
 
     final response = await Dio().post(
-      server + "setBarcode_WBA01",
+      server + "setBarcode_PH",
       data: {
-        "Barcode": '',
+        "Barcode": PHVAR.Barcode,
       },
     );
     if (response.statusCode == 200) {
@@ -129,14 +140,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
+    Navigator.pop(PHMAINcontext);
+    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
     emit(output);
   }
 
   Future<void> _PHMSG_Select_W1(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(PHMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_W1",
+      server + "PH_W1",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -152,14 +166,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
+    Navigator.pop(PHMAINcontext);
+    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
     emit(output);
   }
 
   Future<void> _PHMSG_Select_Send(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(PHMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_SEND",
+      server + "PH_SEND",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -178,14 +195,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
+    Navigator.pop(PHMAINcontext);
+    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
     emit(output);
   }
 
   Future<void> _PHMSG_Reject(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(PHMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_REJ",
+      server + "PH_REJ",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -200,14 +220,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
+    Navigator.pop(PHMAINcontext);
+    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
     emit(output);
   }
 
   Future<void> _PHMSG_clear(String toAdd, Emitter<String> emit) async {
     String output = '';
+    FreeLoading(PHMAINcontext);
 
     final response = await Dio().post(
-      server + "WBA01_clear",
+      server + "PH_clear",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -222,6 +245,8 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
+    Navigator.pop(PHMAINcontext);
+    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
     emit(output);
   }
 

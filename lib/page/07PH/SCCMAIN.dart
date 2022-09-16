@@ -1,58 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/BlocEvent/06-1-SCCBloc.dart';
-import '../../bloc/BlocEvent/06-2-SCCMSG.dart';
+import '../../bloc/BlocEvent/07-1-PHBloc.dart';
+import '../../bloc/BlocEvent/07-2-PHMSG.dart';
 import '../../widget/common/ComInputText.dart';
 import '../../widget/common/popup.dart';
+
 import 'SCCVAR.dart';
 
-//context.read<SCCBloc_Bloc>().add(VALUEINPUT_CLEAR());
-late BuildContext SCCMAINcontext;
+//context.read<PHBloc_Bloc>().add(VALUEINPUT_CLEAR());
+late BuildContext PHMAINcontext;
 
-class SCCMAIN extends StatefulWidget {
-  SCCMAIN({
+class PHMAIN extends StatefulWidget {
+  PHMAIN({
     Key? key,
     this.data,
     this.msg,
   }) : super(key: key);
-  SCCReceive? data;
+  PHReceive? data;
   String? msg;
 
   @override
-  State<SCCMAIN> createState() => _SCCMAINState();
+  State<PHMAIN> createState() => _PHMAINState();
 }
 
-class _SCCMAINState extends State<SCCMAIN> {
+class _PHMAINState extends State<PHMAIN> {
   @override
   void initState() {
     super.initState();
-    // context.read<SCCBloc_Bloc>().add(SCCBloc_Read());
+    context.read<PHBloc_Bloc>().add(PHBloc_Read());
   }
 
   @override
   Widget build(BuildContext context) {
-    SCCMAINcontext = context;
-    SCCVAR.iscontrol = true;
+    PHMAINcontext = context;
+    PHVAR.iscontrol = true;
     String _UserID = widget.data?.UserID ?? '';
     if (_UserID != '') {
-      SCCVAR.UserID = _UserID;
+      PHVAR.UserID = _UserID;
     }
     String _InstrumentID = widget.data?.InstrumentID ?? '';
     if (_InstrumentID != '') {
-      SCCVAR.InstrumentID = _InstrumentID;
+      PHVAR.InstrumentID = _InstrumentID;
     }
     String _Barcode = widget.data?.Barcode ?? '';
     if (_Barcode != '') {
-      SCCVAR.Barcode = _Barcode;
+      PHVAR.Barcode = _Barcode;
     }
 
-    SCCVAR.SPEChi = widget.data?.SPEChi ?? '';
-    SCCVAR.SPEClow = widget.data?.SPEClow ?? '';
+    PHVAR.SPEChi = widget.data?.SPEChi ?? '';
+    PHVAR.SPEClow = widget.data?.SPEClow ?? '';
 
-    SCCVAR.DataPreview = widget.data?.DataPreview ?? ''; //SEND
-    SCCVAR.SEND = widget.data?.SEND ?? '';
-    SCCVAR.Result = widget.data?.Result ?? '';
+    PHVAR.DataPreview = widget.data?.DataPreview ?? ''; //SEND
+    PHVAR.SEND = widget.data?.SEND ?? '';
+    PHVAR.Result = widget.data?.Result ?? '';
 
     return Center(
       child: SizedBox(
@@ -68,7 +69,7 @@ class _SCCMAINState extends State<SCCMAIN> {
                 width: 300,
                 child: Center(
                   child: Text(
-                    "SCC",
+                    "PH",
                     style: TextStyle(fontSize: 36),
                   ),
                 ),
@@ -84,13 +85,13 @@ class _SCCMAINState extends State<SCCMAIN> {
                     sPlaceholder: "USER ID",
                     height: 40,
                     width: 200,
-                    isContr: SCCVAR.iscontrol,
+                    isContr: PHVAR.iscontrol,
                     fnContr: (input) {
-                      SCCVAR.iscontrol = input;
+                      PHVAR.iscontrol = input;
                     },
-                    sValue: SCCVAR.UserID,
+                    sValue: PHVAR.UserID,
                     returnfunc: (s) {
-                      SCCVAR.UserID = s;
+                      PHVAR.UserID = s;
                     },
                     isEnabled:
                         _UserID == '' && _InstrumentID == '' && _Barcode == '',
@@ -100,7 +101,7 @@ class _SCCMAINState extends State<SCCMAIN> {
                       if (_UserID == '' &&
                           _InstrumentID == '' &&
                           _Barcode == '') {
-                        context.read<SCCMSG_Bloc>().add(SCCMSG_UserID());
+                        context.read<PHMSG_Bloc>().add(PHMSG_UserID());
                       }
                     },
                     child: Container(
@@ -125,13 +126,13 @@ class _SCCMAINState extends State<SCCMAIN> {
                     sPlaceholder: "INSTRUMENT",
                     height: 40,
                     width: 200,
-                    isContr: SCCVAR.iscontrol,
+                    isContr: PHVAR.iscontrol,
                     fnContr: (input) {
-                      SCCVAR.iscontrol = input;
+                      PHVAR.iscontrol = input;
                     },
-                    sValue: SCCVAR.InstrumentID,
+                    sValue: PHVAR.InstrumentID,
                     returnfunc: (s) {
-                      SCCVAR.InstrumentID = s;
+                      PHVAR.InstrumentID = s;
                     },
                     isEnabled:
                         _UserID != '' && _InstrumentID == '' && _Barcode == '',
@@ -141,7 +142,7 @@ class _SCCMAINState extends State<SCCMAIN> {
                       if (_UserID != '' &&
                           _InstrumentID == '' &&
                           _Barcode == '') {
-                        context.read<SCCMSG_Bloc>().add(SCCMSG_Instrument());
+                        context.read<PHMSG_Bloc>().add(PHMSG_Instrument());
                       }
                     },
                     child: Container(
@@ -166,13 +167,13 @@ class _SCCMAINState extends State<SCCMAIN> {
                     sPlaceholder: "BARCODE",
                     height: 40,
                     width: 200,
-                    isContr: SCCVAR.iscontrol,
+                    isContr: PHVAR.iscontrol,
                     fnContr: (input) {
-                      SCCVAR.iscontrol = input;
+                      PHVAR.iscontrol = input;
                     },
-                    sValue: SCCVAR.Barcode,
+                    sValue: PHVAR.Barcode,
                     returnfunc: (s) {
-                      SCCVAR.Barcode = s;
+                      PHVAR.Barcode = s;
                     },
                     isEnabled:
                         _UserID != '' && _InstrumentID != '' && _Barcode == '',
@@ -182,8 +183,8 @@ class _SCCMAINState extends State<SCCMAIN> {
                       if (_UserID != '' &&
                           _InstrumentID != '' &&
                           _Barcode == '') {
-                        if (SCCVAR.Barcode.length == 18) {
-                          context.read<SCCMSG_Bloc>().add(SCCMSG_Barcode());
+                        if (PHVAR.Barcode.length == 18) {
+                          context.read<PHMSG_Bloc>().add(PHMSG_Barcode());
                         } else {
                           WORNINGpop(context, ["WRONG BARCODE"], 80, 100);
                         }
@@ -217,12 +218,12 @@ class _SCCMAINState extends State<SCCMAIN> {
                         // color: Colors.black,
                         border: Border.all(color: Colors.blue, width: 2),
                       ),
-                      child: Center(child: Text(SCCVAR.DataPreview)),
+                      child: Center(child: Text(PHVAR.DataPreview)),
                     ),
                     InkWell(
                       onTap: () {
                         //
-                        context.read<SCCBloc_Bloc>().add(SCCBloc_Read());
+                        context.read<PHBloc_Bloc>().add(PHBloc_Read());
                       },
                       child: Container(
                         height: 40,
@@ -260,10 +261,10 @@ class _SCCMAINState extends State<SCCMAIN> {
                             height: 5,
                           ),
                           const Center(child: Text('SPEC')),
-                          if (SCCVAR.SPEChi != '')
-                            Center(child: Text('MAX:' + SCCVAR.SPEChi)),
-                          if (SCCVAR.SPEClow != '')
-                            Center(child: Text('MIN:' + SCCVAR.SPEClow)),
+                          if (PHVAR.SPEChi != '')
+                            Center(child: Text('MAX:' + PHVAR.SPEChi)),
+                          if (PHVAR.SPEClow != '')
+                            Center(child: Text('MIN:' + PHVAR.SPEClow)),
                         ],
                       ),
                     ),
@@ -279,42 +280,46 @@ class _SCCMAINState extends State<SCCMAIN> {
                             height: 5,
                           ),
                           const Center(child: Text('RESULT')),
-                          Center(child: Text(SCCVAR.Result)),
+                          Center(child: Text(PHVAR.Result)),
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
+              // const SizedBox(
+              //   height: 5,
+              // ),
+              // InkWell(
+              //   onTap: () {
+              //     context.read<PHMSG_Bloc>().add(PHMSG_Select_Send());
+              //   },
+              //   child: Container(
+              //     height: 62,
+              //     color: Colors.green,
+              //     child: const Center(
+              //       child: Text(
+              //         "SEND DATA",
+              //         style: TextStyle(color: Colors.white),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               const SizedBox(
                 height: 5,
               ),
               InkWell(
                 onTap: () {
-                  context.read<SCCMSG_Bloc>().add(SCCMSG_Select_Send());
-                },
-                child: Container(
-                  height: 62,
-                  color: Colors.green,
-                  child: const Center(
-                    child: Text(
-                      "SEND DATA",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              InkWell(
-                onTap: () {
-                  SCCVAR.iscontrol = true;
-                  context.read<SCCMSG_Bloc>().add(SCCMSG_clear());
-                  SCCVAR.UserID = '';
-                  SCCVAR.InstrumentID = '';
-                  SCCVAR.Barcode = '';
-                  setState(() {});
+                  PHVAR.iscontrol = true;
+                  context.read<PHMSG_Bloc>().add(PHMSG_clear());
+                  PHVAR.UserID = '';
+                  PHVAR.InstrumentID = '';
+                  PHVAR.Barcode = '';
+                  setState(() {
+                    PHVAR.UserID = '';
+                    PHVAR.InstrumentID = '';
+                    PHVAR.Barcode = '';
+                  });
                 },
                 child: Container(
                   height: 62,
@@ -332,7 +337,7 @@ class _SCCMAINState extends State<SCCMAIN> {
               ),
               InkWell(
                 onTap: () {
-                  context.read<SCCMSG_Bloc>().add(SCCMSG_Reject());
+                  context.read<PHMSG_Bloc>().add(PHMSG_Reject());
                 },
                 child: Container(
                   height: 30,

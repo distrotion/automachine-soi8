@@ -8,6 +8,8 @@ import '../../page/page2.dart';
 import '../../page/page3.dart';
 import '../../page/page4.dart';
 import '../../page/page5.dart';
+import '../../page/page6.dart';
+import '../../page/page7.dart';
 import 'sub_widget.dart';
 
 late BuildContext MenuContext;
@@ -80,24 +82,34 @@ class Data_Menu_mainmenu extends StatelessWidget {
           Lv: 1,
         ),
         menu_normal(
-          name: "Page2",
+          name: "BALANCE01",
           page: Page2(),
           Lv: 1,
         ),
+        // menu_normal(
+        //   name: "BALANCE02",
+        //   page: Page3(),
+        //   Lv: 1,
+        // ),
         menu_normal(
-          name: "Page3",
-          page: Page3(),
-          Lv: 1,
-        ),
-        menu_normal(
-          name: "Page4",
+          name: "FP COC",
           page: Page4(),
           Lv: 1,
         ),
         menu_normal(
-          name: "Page5",
+          name: "FP TCC",
           page: Page5(),
-          Lv: 5,
+          Lv: 1,
+        ),
+        menu_normal(
+          name: "FP SCC",
+          page: Page6(),
+          Lv: 1,
+        ),
+        menu_normal(
+          name: "PH01",
+          page: Page7(),
+          Lv: 1,
         ),
         menu_logout(
           name: "Logout",

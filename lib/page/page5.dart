@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/BlocEvent/05-1-TCCBloc.dart';
 import '../bloc/BlocEvent/05-2-TCCMSG.dart';
+import '05TCC/TCCMAIN.dart';
 
 class Page5 extends StatelessWidget {
   const Page5({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Page5Body();
+    return Page5BlocBody();
   }
 }
 
@@ -67,13 +68,9 @@ class Page5Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        height: 100,
-        width: 100,
-        color: Colors.deepOrange,
-        child: const Text("PAGE 5"),
-      ),
+    return TCCMAIN(
+      data: data,
+      msg: msg,
     );
   }
 }
