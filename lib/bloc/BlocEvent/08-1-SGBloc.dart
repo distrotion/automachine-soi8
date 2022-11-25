@@ -4,38 +4,38 @@ import 'package:dio/dio.dart';
 
 import '../../data/global.dart';
 
-import '../../page/07PH/PHMAIN.dart';
+import '../../page/08SG/SGMAIN.dart';
 import '../../widget/common/Loading.dart';
 //-------------------------------------------------
 
 String server = serverG;
 
-abstract class PHBloc_Event {}
+abstract class SGBloc_Event {}
 
-class PHBloc_Read extends PHBloc_Event {}
+class SGBloc_Read extends SGBloc_Event {}
 
-class PHBloc_Flush extends PHBloc_Event {}
+class SGBloc_Flush extends SGBloc_Event {}
 
-class PHBloc_Bloc extends Bloc<PHBloc_Event, PHReceive> {
-  PHBloc_Bloc() : super(PHReceive()) {
-    on<PHBloc_Read>((event, emit) {
-      return _PHBloc_Read(PHReceive(), emit);
+class SGBloc_Bloc extends Bloc<SGBloc_Event, SGReceive> {
+  SGBloc_Bloc() : super(SGReceive()) {
+    on<SGBloc_Read>((event, emit) {
+      return _SGBloc_Read(SGReceive(), emit);
     });
-    on<PHBloc_Flush>((event, emit) {
-      return _PHBloc_Flush(PHReceive(), emit);
+    on<SGBloc_Flush>((event, emit) {
+      return _SGBloc_Flush(SGReceive(), emit);
     });
   }
-  Future<void> _PHBloc_Read(PHReceive toAdd, Emitter<PHReceive> emit) async {
-    PHReceive output = PHReceive();
+  Future<void> _SGBloc_Read(SGReceive toAdd, Emitter<SGReceive> emit) async {
+    SGReceive output = SGReceive();
 
-    FreeLoading(PHMAINcontext);
+    FreeLoading(SGMAINcontext);
 
     final response = await Dio().post(
-      server + "getPH",
+      server + "getSG",
       data: {},
     );
     if (response.statusCode == 200) {
-      Navigator.pop(PHMAINcontext);
+      Navigator.pop(SGMAINcontext);
       var databuff = response.data;
       if (databuff != null) {
         output.UserID =
@@ -57,20 +57,20 @@ class PHBloc_Bloc extends Bloc<PHBloc_Event, PHReceive> {
       }
     } else {
       //
-      Navigator.pop(PHMAINcontext);
+      Navigator.pop(SGMAINcontext);
     }
 
     emit(output);
   }
 
-  Future<void> _PHBloc_Flush(PHReceive toAdd, Emitter<PHReceive> emit) async {
-    PHReceive output = PHReceive();
+  Future<void> _SGBloc_Flush(SGReceive toAdd, Emitter<SGReceive> emit) async {
+    SGReceive output = SGReceive();
     emit(output);
   }
 }
 
-class PHReceive {
-  PHReceive({
+class SGReceive {
+  SGReceive({
     this.UserID = '',
     this.InstrumentID = '',
     this.Barcode = '',

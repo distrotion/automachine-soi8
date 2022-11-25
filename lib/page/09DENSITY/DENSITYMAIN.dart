@@ -1,64 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/BlocEvent/06-1-SCCBloc.dart';
-import '../../bloc/BlocEvent/06-2-SCCMSG.dart';
+import '../../bloc/BlocEvent/09-1-DENSITYBloc.dart';
+import '../../bloc/BlocEvent/09-2-DENSITYMSG.dart';
 import '../../widget/common/ComInputText.dart';
 import '../../widget/common/popup.dart';
-import 'SCCVAR.dart';
 
-//context.read<SCCBloc_Bloc>().add(VALUEINPUT_CLEAR());
-late BuildContext SCCMAINcontext;
+import 'DENSITYVAR.dart';
 
-class SCCMAIN extends StatefulWidget {
-  SCCMAIN({
+//context.read<DENSITYBloc_Bloc>().add(VALUEINPUT_CLEAR());
+late BuildContext DENSITYMAINcontext;
+
+class DENSITYMAIN extends StatefulWidget {
+  DENSITYMAIN({
     Key? key,
     this.data,
     this.msg,
   }) : super(key: key);
-  SCCReceive? data;
+  DENSITYReceive? data;
   String? msg;
 
   @override
-  State<SCCMAIN> createState() => _SCCMAINState();
+  State<DENSITYMAIN> createState() => _DENSITYMAINState();
 }
 
-class _SCCMAINState extends State<SCCMAIN> {
+class _DENSITYMAINState extends State<DENSITYMAIN> {
   @override
   void initState() {
     super.initState();
-    context.read<SCCBloc_Bloc>().add(SCCBloc_Read());
+    context.read<DENSITYBloc_Bloc>().add(DENSITYBloc_Read());
   }
 
   @override
   Widget build(BuildContext context) {
-    SCCMAINcontext = context;
-    SCCVAR.iscontrol = true;
+    DENSITYMAINcontext = context;
+    DENSITYVAR.iscontrol = true;
     String _UserID = widget.data?.UserID ?? '';
     if (_UserID != '') {
-      SCCVAR.UserID = _UserID;
+      DENSITYVAR.UserID = _UserID;
     } else {
-      SCCVAR.UserID = '';
+      DENSITYVAR.UserID = '';
     }
     String _InstrumentID = widget.data?.InstrumentID ?? '';
     if (_InstrumentID != '') {
-      SCCVAR.InstrumentID = _InstrumentID;
+      DENSITYVAR.InstrumentID = _InstrumentID;
     } else {
-      SCCVAR.InstrumentID = '';
+      DENSITYVAR.InstrumentID = '';
     }
     String _Barcode = widget.data?.Barcode ?? '';
     if (_Barcode != '') {
-      SCCVAR.Barcode = _Barcode;
+      DENSITYVAR.Barcode = _Barcode;
     } else {
-      SCCVAR.Barcode = '';
+      DENSITYVAR.Barcode = '';
     }
 
-    SCCVAR.SPEChi = widget.data?.SPEChi ?? '';
-    SCCVAR.SPEClow = widget.data?.SPEClow ?? '';
+    DENSITYVAR.SPEChi = widget.data?.SPEChi ?? '';
+    DENSITYVAR.SPEClow = widget.data?.SPEClow ?? '';
 
-    SCCVAR.DataPreview = widget.data?.DataPreview ?? ''; //SEND
-    SCCVAR.SEND = widget.data?.SEND ?? '';
-    SCCVAR.Result = widget.data?.Result ?? '';
+    DENSITYVAR.DataPreview = widget.data?.DataPreview ?? ''; //SEND
+    DENSITYVAR.SEND = widget.data?.SEND ?? '';
+    DENSITYVAR.Result = widget.data?.Result ?? '';
 
     return Center(
       child: SizedBox(
@@ -74,7 +75,7 @@ class _SCCMAINState extends State<SCCMAIN> {
                 width: 300,
                 child: Center(
                   child: Text(
-                    "SCC",
+                    "DENSITY",
                     style: TextStyle(fontSize: 36),
                   ),
                 ),
@@ -90,13 +91,13 @@ class _SCCMAINState extends State<SCCMAIN> {
                     sPlaceholder: "USER ID",
                     height: 40,
                     width: 200,
-                    isContr: SCCVAR.iscontrol,
+                    isContr: DENSITYVAR.iscontrol,
                     fnContr: (input) {
-                      SCCVAR.iscontrol = input;
+                      DENSITYVAR.iscontrol = input;
                     },
-                    sValue: SCCVAR.UserID,
+                    sValue: DENSITYVAR.UserID,
                     returnfunc: (s) {
-                      SCCVAR.UserID = s;
+                      DENSITYVAR.UserID = s;
                     },
                     isEnabled:
                         _UserID == '' && _InstrumentID == '' && _Barcode == '',
@@ -106,7 +107,9 @@ class _SCCMAINState extends State<SCCMAIN> {
                       if (_UserID == '' &&
                           _InstrumentID == '' &&
                           _Barcode == '') {
-                        context.read<SCCMSG_Bloc>().add(SCCMSG_UserID());
+                        context
+                            .read<DENSITYMSG_Bloc>()
+                            .add(DENSITYMSG_UserID());
                       }
                     },
                     child: Container(
@@ -131,13 +134,13 @@ class _SCCMAINState extends State<SCCMAIN> {
                     sPlaceholder: "INSTRUMENT",
                     height: 40,
                     width: 200,
-                    isContr: SCCVAR.iscontrol,
+                    isContr: DENSITYVAR.iscontrol,
                     fnContr: (input) {
-                      SCCVAR.iscontrol = input;
+                      DENSITYVAR.iscontrol = input;
                     },
-                    sValue: SCCVAR.InstrumentID,
+                    sValue: DENSITYVAR.InstrumentID,
                     returnfunc: (s) {
-                      SCCVAR.InstrumentID = s;
+                      DENSITYVAR.InstrumentID = s;
                     },
                     isEnabled:
                         _UserID != '' && _InstrumentID == '' && _Barcode == '',
@@ -147,7 +150,9 @@ class _SCCMAINState extends State<SCCMAIN> {
                       if (_UserID != '' &&
                           _InstrumentID == '' &&
                           _Barcode == '') {
-                        context.read<SCCMSG_Bloc>().add(SCCMSG_Instrument());
+                        context
+                            .read<DENSITYMSG_Bloc>()
+                            .add(DENSITYMSG_Instrument());
                       }
                     },
                     child: Container(
@@ -172,13 +177,13 @@ class _SCCMAINState extends State<SCCMAIN> {
                     sPlaceholder: "BARCODE",
                     height: 40,
                     width: 200,
-                    isContr: SCCVAR.iscontrol,
+                    isContr: DENSITYVAR.iscontrol,
                     fnContr: (input) {
-                      SCCVAR.iscontrol = input;
+                      DENSITYVAR.iscontrol = input;
                     },
-                    sValue: SCCVAR.Barcode,
+                    sValue: DENSITYVAR.Barcode,
                     returnfunc: (s) {
-                      SCCVAR.Barcode = s;
+                      DENSITYVAR.Barcode = s;
                     },
                     isEnabled:
                         _UserID != '' && _InstrumentID != '' && _Barcode == '',
@@ -188,8 +193,10 @@ class _SCCMAINState extends State<SCCMAIN> {
                       if (_UserID != '' &&
                           _InstrumentID != '' &&
                           _Barcode == '') {
-                        if (SCCVAR.Barcode.length == 18) {
-                          context.read<SCCMSG_Bloc>().add(SCCMSG_Barcode());
+                        if (DENSITYVAR.Barcode.length == 18) {
+                          context
+                              .read<DENSITYMSG_Bloc>()
+                              .add(DENSITYMSG_Barcode());
                         } else {
                           WORNINGpop(context, ["WRONG BARCODE"], 80, 100);
                         }
@@ -223,12 +230,14 @@ class _SCCMAINState extends State<SCCMAIN> {
                         // color: Colors.black,
                         border: Border.all(color: Colors.blue, width: 2),
                       ),
-                      child: Center(child: Text(SCCVAR.DataPreview)),
+                      child: Center(child: Text(DENSITYVAR.DataPreview)),
                     ),
                     InkWell(
                       onTap: () {
                         //
-                        context.read<SCCBloc_Bloc>().add(SCCBloc_Read());
+                        context
+                            .read<DENSITYBloc_Bloc>()
+                            .add(DENSITYBloc_Read());
                       },
                       child: Container(
                         height: 40,
@@ -266,10 +275,10 @@ class _SCCMAINState extends State<SCCMAIN> {
                             height: 5,
                           ),
                           const Center(child: Text('SPEC')),
-                          if (SCCVAR.SPEChi != '')
-                            Center(child: Text('MAX:' + SCCVAR.SPEChi)),
-                          if (SCCVAR.SPEClow != '')
-                            Center(child: Text('MIN:' + SCCVAR.SPEClow)),
+                          if (DENSITYVAR.SPEChi != '')
+                            Center(child: Text('MAX:' + DENSITYVAR.SPEChi)),
+                          if (DENSITYVAR.SPEClow != '')
+                            Center(child: Text('MIN:' + DENSITYVAR.SPEClow)),
                         ],
                       ),
                     ),
@@ -285,7 +294,7 @@ class _SCCMAINState extends State<SCCMAIN> {
                             height: 5,
                           ),
                           const Center(child: Text('RESULT')),
-                          Center(child: Text(SCCVAR.Result)),
+                          Center(child: Text(DENSITYVAR.Result)),
                         ],
                       ),
                     ),
@@ -297,7 +306,7 @@ class _SCCMAINState extends State<SCCMAIN> {
               // ),
               // InkWell(
               //   onTap: () {
-              //     context.read<SCCMSG_Bloc>().add(SCCMSG_Select_Send());
+              //     context.read<DENSITYMSG_Bloc>().add(DENSITYMSG_Select_Send());
               //   },
               //   child: Container(
               //     height: 62,
@@ -315,12 +324,16 @@ class _SCCMAINState extends State<SCCMAIN> {
               ),
               InkWell(
                 onTap: () {
-                  SCCVAR.iscontrol = true;
-                  context.read<SCCMSG_Bloc>().add(SCCMSG_clear());
-                  SCCVAR.UserID = '';
-                  SCCVAR.InstrumentID = '';
-                  SCCVAR.Barcode = '';
-                  setState(() {});
+                  DENSITYVAR.iscontrol = true;
+                  context.read<DENSITYMSG_Bloc>().add(DENSITYMSG_clear());
+                  DENSITYVAR.UserID = '';
+                  DENSITYVAR.InstrumentID = '';
+                  DENSITYVAR.Barcode = '';
+                  setState(() {
+                    DENSITYVAR.UserID = '';
+                    DENSITYVAR.InstrumentID = '';
+                    DENSITYVAR.Barcode = '';
+                  });
                 },
                 child: Container(
                   height: 62,
@@ -338,11 +351,7 @@ class _SCCMAINState extends State<SCCMAIN> {
               ),
               InkWell(
                 onTap: () {
-                  context.read<SCCMSG_Bloc>().add(SCCMSG_Reject());
-                  SCCVAR.UserID = '';
-                  SCCVAR.InstrumentID = '';
-                  SCCVAR.Barcode = '';
-                  setState(() {});
+                  context.read<DENSITYMSG_Bloc>().add(DENSITYMSG_Reject());
                 },
                 child: Container(
                   height: 30,

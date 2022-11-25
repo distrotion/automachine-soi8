@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/global.dart';
 
 import '../../page/05TCC/TCCMAIN.dart';
+import '../../page/05TCC/TCCVAR.dart';
 import '../../widget/common/Loading.dart';
 import '../cubit/NotificationEvent.dart';
 import '05-1-TCCBloc.dart';
@@ -63,7 +64,7 @@ class TCCMSG_Bloc extends Bloc<TCCMSG_Event, String> {
 
     final response = await Dio().post(
       server + "setUserID_FPTCC",
-      data: {"UserID": ''},
+      data: {"UserID": TCCVAR.UserID},
     );
     if (response.statusCode == 200) {
       var databuff = response.data;
@@ -89,7 +90,7 @@ class TCCMSG_Bloc extends Bloc<TCCMSG_Event, String> {
     final response = await Dio().post(
       server + "setInstrumentID_FPTCC",
       data: {
-        "InstrumentID": '',
+        "InstrumentID": TCCVAR.InstrumentID,
       },
     );
     if (response.statusCode == 200) {
@@ -118,7 +119,7 @@ class TCCMSG_Bloc extends Bloc<TCCMSG_Event, String> {
     final response = await Dio().post(
       server + "setBarcode_FPTCC",
       data: {
-        "Barcode": '',
+        "Barcode": TCCVAR.Barcode,
       },
     );
     if (response.statusCode == 200) {

@@ -4,68 +4,68 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/global.dart';
 
-import '../../page/07PH/PHMAIN.dart';
-import '../../page/07PH/PHVAR.dart';
+import '../../page/09DENSITY/DENSITYMAIN.dart';
+import '../../page/09DENSITY/DENSITYVAR.dart';
 import '../../widget/common/Loading.dart';
 import '../cubit/NotificationEvent.dart';
-import '07-1-PHBloc.dart';
+import '09-1-DENSITYBloc.dart';
 
 //-------------------------------------------------
 String server = serverG;
 
-abstract class PHMSG_Event {}
+abstract class DENSITYMSG_Event {}
 
-class PHMSG_UserID extends PHMSG_Event {}
+class DENSITYMSG_UserID extends DENSITYMSG_Event {}
 
-class PHMSG_Instrument extends PHMSG_Event {}
+class DENSITYMSG_Instrument extends DENSITYMSG_Event {}
 
-class PHMSG_Barcode extends PHMSG_Event {}
+class DENSITYMSG_Barcode extends DENSITYMSG_Event {}
 
-class PHMSG_Select_Send extends PHMSG_Event {}
+class DENSITYMSG_Select_Send extends DENSITYMSG_Event {}
 
-class PHMSG_Reject extends PHMSG_Event {}
+class DENSITYMSG_Reject extends DENSITYMSG_Event {}
 
-class PHMSG_clear extends PHMSG_Event {}
+class DENSITYMSG_clear extends DENSITYMSG_Event {}
 
-class PHMSG_Flush extends PHMSG_Event {}
+class DENSITYMSG_Flush extends DENSITYMSG_Event {}
 
-class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
-  PHMSG_Bloc() : super('') {
-    on<PHMSG_UserID>((event, emit) {
-      return _PHMSG_UserID('', emit);
+class DENSITYMSG_Bloc extends Bloc<DENSITYMSG_Event, String> {
+  DENSITYMSG_Bloc() : super('') {
+    on<DENSITYMSG_UserID>((event, emit) {
+      return _DENSITYMSG_UserID('', emit);
     });
 
-    on<PHMSG_Instrument>((event, emit) {
-      return _PHMSG_Instrument('', emit);
+    on<DENSITYMSG_Instrument>((event, emit) {
+      return _DENSITYMSG_Instrument('', emit);
     });
 
-    on<PHMSG_Barcode>((event, emit) {
-      return _PHMSG_Barcode('', emit);
+    on<DENSITYMSG_Barcode>((event, emit) {
+      return _DENSITYMSG_Barcode('', emit);
     });
 
-    on<PHMSG_Select_Send>((event, emit) {
-      return _PHMSG_Select_Send('', emit);
+    on<DENSITYMSG_Select_Send>((event, emit) {
+      return _DENSITYMSG_Select_Send('', emit);
     });
 
-    on<PHMSG_Reject>((event, emit) {
-      return _PHMSG_Reject('', emit);
+    on<DENSITYMSG_Reject>((event, emit) {
+      return _DENSITYMSG_Reject('', emit);
     });
 
-    on<PHMSG_clear>((event, emit) {
-      return _PHMSG_clear('', emit);
+    on<DENSITYMSG_clear>((event, emit) {
+      return _DENSITYMSG_clear('', emit);
     });
 
-    on<PHMSG_Flush>((event, emit) {
-      return _PHMSG_Flush('', emit);
+    on<DENSITYMSG_Flush>((event, emit) {
+      return _DENSITYMSG_Flush('', emit);
     });
   }
-  Future<void> _PHMSG_UserID(String toAdd, Emitter<String> emit) async {
+  Future<void> _DENSITYMSG_UserID(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(DENSITYMAINcontext);
 
     final response = await Dio().post(
-      server + "setUserID_PH",
-      data: {"UserID": PHVAR.UserID},
+      server + "setUserID_DENSITY",
+      data: {"UserID": DENSITYVAR.UserID},
     );
     if (response.statusCode == 200) {
       var databuff = response.data;
@@ -79,19 +79,20 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(DENSITYMAINcontext);
+    DENSITYMAINcontext.read<DENSITYBloc_Bloc>().add(DENSITYBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Instrument(String toAdd, Emitter<String> emit) async {
+  Future<void> _DENSITYMSG_Instrument(
+      String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(DENSITYMAINcontext);
 
     final response = await Dio().post(
-      server + "setInstrumentID_PH",
+      server + "setInstrumentID_DENSITY",
       data: {
-        "InstrumentID": PHVAR.InstrumentID,
+        "InstrumentID": DENSITYVAR.InstrumentID,
       },
     );
     if (response.statusCode == 200) {
@@ -108,19 +109,19 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(DENSITYMAINcontext);
+    DENSITYMAINcontext.read<DENSITYBloc_Bloc>().add(DENSITYBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Barcode(String toAdd, Emitter<String> emit) async {
+  Future<void> _DENSITYMSG_Barcode(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(DENSITYMAINcontext);
 
     final response = await Dio().post(
-      server + "setBarcode_PH",
+      server + "setBarcode_DENSITY",
       data: {
-        "Barcode": PHVAR.Barcode,
+        "Barcode": DENSITYVAR.Barcode,
       },
     );
     if (response.statusCode == 200) {
@@ -140,17 +141,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(DENSITYMAINcontext);
+    DENSITYMAINcontext.read<DENSITYBloc_Bloc>().add(DENSITYBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Select_W1(String toAdd, Emitter<String> emit) async {
+  Future<void> _DENSITYMSG_Select_W1(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(DENSITYMAINcontext);
 
     final response = await Dio().post(
-      server + "PH_W1",
+      server + "DENSITY_W1",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -166,17 +167,18 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(DENSITYMAINcontext);
+    DENSITYMAINcontext.read<DENSITYBloc_Bloc>().add(DENSITYBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Select_Send(String toAdd, Emitter<String> emit) async {
+  Future<void> _DENSITYMSG_Select_Send(
+      String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(DENSITYMAINcontext);
 
     final response = await Dio().post(
-      server + "PH_SEND",
+      server + "DENSITY_SEND",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -195,17 +197,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(DENSITYMAINcontext);
+    DENSITYMAINcontext.read<DENSITYBloc_Bloc>().add(DENSITYBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Reject(String toAdd, Emitter<String> emit) async {
+  Future<void> _DENSITYMSG_Reject(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(DENSITYMAINcontext);
 
     final response = await Dio().post(
-      server + "PH_REJ",
+      server + "DENSITY_REJ",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -220,17 +222,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(DENSITYMAINcontext);
+    DENSITYMAINcontext.read<DENSITYBloc_Bloc>().add(DENSITYBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_clear(String toAdd, Emitter<String> emit) async {
+  Future<void> _DENSITYMSG_clear(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(DENSITYMAINcontext);
 
     final response = await Dio().post(
-      server + "PH_clear",
+      server + "DENSITY_clear",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -245,12 +247,12 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(DENSITYMAINcontext);
+    DENSITYMAINcontext.read<DENSITYBloc_Bloc>().add(DENSITYBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Flush(String toAdd, Emitter<String> emit) async {
+  Future<void> _DENSITYMSG_Flush(String toAdd, Emitter<String> emit) async {
     String output = '';
     emit(output);
   }

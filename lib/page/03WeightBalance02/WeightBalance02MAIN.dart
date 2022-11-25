@@ -37,14 +37,20 @@ class _WeightBalance02MAINState extends State<WeightBalance02MAIN> {
     String _UserID = widget.data?.UserID ?? '';
     if (_UserID != '') {
       WeightBalance02VAR.UserID = _UserID;
+    } else {
+      WeightBalance02VAR.UserID = '';
     }
     String _InstrumentID = widget.data?.InstrumentID ?? '';
     if (_InstrumentID != '') {
       WeightBalance02VAR.InstrumentID = _InstrumentID;
+    } else {
+      WeightBalance02VAR.InstrumentID = '';
     }
     String _Barcode = widget.data?.Barcode ?? '';
     if (_Barcode != '') {
       WeightBalance02VAR.Barcode = _Barcode;
+    } else {
+      WeightBalance02VAR.Barcode = '';
     }
 
     WeightBalance02VAR.SPEChi = widget.data?.SPEChi ?? '';
@@ -87,7 +93,7 @@ class _WeightBalance02MAINState extends State<WeightBalance02MAIN> {
                 width: 300,
                 child: Center(
                   child: Text(
-                    "BALANCE 01 (1)",
+                    "BALANCE 02 (2)",
                     style: TextStyle(fontSize: 36),
                   ),
                 ),
@@ -704,6 +710,9 @@ class _WeightBalance02MAINState extends State<WeightBalance02MAIN> {
                     ),
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 50,
               ),
             ],
           ),

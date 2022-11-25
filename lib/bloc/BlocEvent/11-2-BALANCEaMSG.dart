@@ -4,68 +4,68 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/global.dart';
 
-import '../../page/07PH/PHMAIN.dart';
-import '../../page/07PH/PHVAR.dart';
+import '../../page/11BALANCEa/BALANCEaMAIN.dart';
+import '../../page/11BALANCEa/BALANCEaVAR.dart';
 import '../../widget/common/Loading.dart';
 import '../cubit/NotificationEvent.dart';
-import '07-1-PHBloc.dart';
+import '11-1-BALANCEaBloc.dart';
 
 //-------------------------------------------------
 String server = serverG;
 
-abstract class PHMSG_Event {}
+abstract class BALANCEaMSG_Event {}
 
-class PHMSG_UserID extends PHMSG_Event {}
+class BALANCEaMSG_UserID extends BALANCEaMSG_Event {}
 
-class PHMSG_Instrument extends PHMSG_Event {}
+class BALANCEaMSG_Instrument extends BALANCEaMSG_Event {}
 
-class PHMSG_Barcode extends PHMSG_Event {}
+class BALANCEaMSG_Barcode extends BALANCEaMSG_Event {}
 
-class PHMSG_Select_Send extends PHMSG_Event {}
+class BALANCEaMSG_Select_Send extends BALANCEaMSG_Event {}
 
-class PHMSG_Reject extends PHMSG_Event {}
+class BALANCEaMSG_Reject extends BALANCEaMSG_Event {}
 
-class PHMSG_clear extends PHMSG_Event {}
+class BALANCEaMSG_clear extends BALANCEaMSG_Event {}
 
-class PHMSG_Flush extends PHMSG_Event {}
+class BALANCEaMSG_Flush extends BALANCEaMSG_Event {}
 
-class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
-  PHMSG_Bloc() : super('') {
-    on<PHMSG_UserID>((event, emit) {
-      return _PHMSG_UserID('', emit);
+class BALANCEaMSG_Bloc extends Bloc<BALANCEaMSG_Event, String> {
+  BALANCEaMSG_Bloc() : super('') {
+    on<BALANCEaMSG_UserID>((event, emit) {
+      return _BALANCEaMSG_UserID('', emit);
     });
 
-    on<PHMSG_Instrument>((event, emit) {
-      return _PHMSG_Instrument('', emit);
+    on<BALANCEaMSG_Instrument>((event, emit) {
+      return _BALANCEaMSG_Instrument('', emit);
     });
 
-    on<PHMSG_Barcode>((event, emit) {
-      return _PHMSG_Barcode('', emit);
+    on<BALANCEaMSG_Barcode>((event, emit) {
+      return _BALANCEaMSG_Barcode('', emit);
     });
 
-    on<PHMSG_Select_Send>((event, emit) {
-      return _PHMSG_Select_Send('', emit);
+    on<BALANCEaMSG_Select_Send>((event, emit) {
+      return _BALANCEaMSG_Select_Send('', emit);
     });
 
-    on<PHMSG_Reject>((event, emit) {
-      return _PHMSG_Reject('', emit);
+    on<BALANCEaMSG_Reject>((event, emit) {
+      return _BALANCEaMSG_Reject('', emit);
     });
 
-    on<PHMSG_clear>((event, emit) {
-      return _PHMSG_clear('', emit);
+    on<BALANCEaMSG_clear>((event, emit) {
+      return _BALANCEaMSG_clear('', emit);
     });
 
-    on<PHMSG_Flush>((event, emit) {
-      return _PHMSG_Flush('', emit);
+    on<BALANCEaMSG_Flush>((event, emit) {
+      return _BALANCEaMSG_Flush('', emit);
     });
   }
-  Future<void> _PHMSG_UserID(String toAdd, Emitter<String> emit) async {
+  Future<void> _BALANCEaMSG_UserID(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(BALANCEaMAINcontext);
 
     final response = await Dio().post(
-      server + "setUserID_PH",
-      data: {"UserID": PHVAR.UserID},
+      server + "setUserID_BALANCEa",
+      data: {"UserID": BALANCEaVAR.UserID},
     );
     if (response.statusCode == 200) {
       var databuff = response.data;
@@ -79,19 +79,20 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(BALANCEaMAINcontext);
+    BALANCEaMAINcontext.read<BALANCEaBloc_Bloc>().add(BALANCEaBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Instrument(String toAdd, Emitter<String> emit) async {
+  Future<void> _BALANCEaMSG_Instrument(
+      String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(BALANCEaMAINcontext);
 
     final response = await Dio().post(
-      server + "setInstrumentID_PH",
+      server + "setInstrumentID_BALANCEa",
       data: {
-        "InstrumentID": PHVAR.InstrumentID,
+        "InstrumentID": BALANCEaVAR.InstrumentID,
       },
     );
     if (response.statusCode == 200) {
@@ -108,19 +109,19 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(BALANCEaMAINcontext);
+    BALANCEaMAINcontext.read<BALANCEaBloc_Bloc>().add(BALANCEaBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Barcode(String toAdd, Emitter<String> emit) async {
+  Future<void> _BALANCEaMSG_Barcode(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(BALANCEaMAINcontext);
 
     final response = await Dio().post(
-      server + "setBarcode_PH",
+      server + "setBarcode_BALANCEa",
       data: {
-        "Barcode": PHVAR.Barcode,
+        "Barcode": BALANCEaVAR.Barcode,
       },
     );
     if (response.statusCode == 200) {
@@ -140,17 +141,18 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(BALANCEaMAINcontext);
+    BALANCEaMAINcontext.read<BALANCEaBloc_Bloc>().add(BALANCEaBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Select_W1(String toAdd, Emitter<String> emit) async {
+  Future<void> _BALANCEaMSG_Select_W1(
+      String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(BALANCEaMAINcontext);
 
     final response = await Dio().post(
-      server + "PH_W1",
+      server + "BALANCEa_W1",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -166,17 +168,18 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(BALANCEaMAINcontext);
+    BALANCEaMAINcontext.read<BALANCEaBloc_Bloc>().add(BALANCEaBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Select_Send(String toAdd, Emitter<String> emit) async {
+  Future<void> _BALANCEaMSG_Select_Send(
+      String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(BALANCEaMAINcontext);
 
     final response = await Dio().post(
-      server + "PH_SEND",
+      server + "BALANCEa_SEND",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -195,17 +198,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(BALANCEaMAINcontext);
+    BALANCEaMAINcontext.read<BALANCEaBloc_Bloc>().add(BALANCEaBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Reject(String toAdd, Emitter<String> emit) async {
+  Future<void> _BALANCEaMSG_Reject(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(BALANCEaMAINcontext);
 
     final response = await Dio().post(
-      server + "PH_REJ",
+      server + "BALANCEa_REJ",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -220,17 +223,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(BALANCEaMAINcontext);
+    BALANCEaMAINcontext.read<BALANCEaBloc_Bloc>().add(BALANCEaBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_clear(String toAdd, Emitter<String> emit) async {
+  Future<void> _BALANCEaMSG_clear(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(BALANCEaMAINcontext);
 
     final response = await Dio().post(
-      server + "PH_clear",
+      server + "BALANCEa_clear",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -245,12 +248,12 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(BALANCEaMAINcontext);
+    BALANCEaMAINcontext.read<BALANCEaBloc_Bloc>().add(BALANCEaBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Flush(String toAdd, Emitter<String> emit) async {
+  Future<void> _BALANCEaMSG_Flush(String toAdd, Emitter<String> emit) async {
     String output = '';
     emit(output);
   }

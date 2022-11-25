@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '01SELECT_INS/SELECT_INSmain.dart';
+
 //---------------------------------------------------------
 
 class Page1 extends StatelessWidget {
@@ -16,13 +18,6 @@ class Page1Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        height: 100,
-        width: 100,
-        color: Colors.blue,
-        child: const Text("PAGE 1"),
-      ),
-    );
+    return SELECT_INSmain();
   }
 }

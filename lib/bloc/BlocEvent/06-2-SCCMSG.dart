@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/global.dart';
 
 import '../../page/06SCC/SCCMAIN.dart';
+import '../../page/06SCC/SCCVAR.dart';
 import '../../widget/common/Loading.dart';
 import '../cubit/NotificationEvent.dart';
 import '06-1-SCCBloc.dart';
@@ -63,7 +64,7 @@ class SCCMSG_Bloc extends Bloc<SCCMSG_Event, String> {
 
     final response = await Dio().post(
       server + "setUserID_FPSCC",
-      data: {"UserID": ''},
+      data: {"UserID": SCCVAR.UserID},
     );
     if (response.statusCode == 200) {
       var databuff = response.data;
@@ -89,7 +90,7 @@ class SCCMSG_Bloc extends Bloc<SCCMSG_Event, String> {
     final response = await Dio().post(
       server + "setInstrumentID_FPSCC",
       data: {
-        "InstrumentID": '',
+        "InstrumentID": SCCVAR.InstrumentID,
       },
     );
     if (response.statusCode == 200) {
@@ -118,7 +119,7 @@ class SCCMSG_Bloc extends Bloc<SCCMSG_Event, String> {
     final response = await Dio().post(
       server + "setBarcode_FPSCC",
       data: {
-        "Barcode": '',
+        "Barcode": SCCVAR.Barcode,
       },
     );
     if (response.statusCode == 200) {

@@ -4,38 +4,39 @@ import 'package:dio/dio.dart';
 
 import '../../data/global.dart';
 
-import '../../page/07PH/PHMAIN.dart';
+import '../../page/11BALANCEa/BALANCEaMAIN.dart';
 import '../../widget/common/Loading.dart';
 //-------------------------------------------------
 
 String server = serverG;
 
-abstract class PHBloc_Event {}
+abstract class BALANCEaBloc_Event {}
 
-class PHBloc_Read extends PHBloc_Event {}
+class BALANCEaBloc_Read extends BALANCEaBloc_Event {}
 
-class PHBloc_Flush extends PHBloc_Event {}
+class BALANCEaBloc_Flush extends BALANCEaBloc_Event {}
 
-class PHBloc_Bloc extends Bloc<PHBloc_Event, PHReceive> {
-  PHBloc_Bloc() : super(PHReceive()) {
-    on<PHBloc_Read>((event, emit) {
-      return _PHBloc_Read(PHReceive(), emit);
+class BALANCEaBloc_Bloc extends Bloc<BALANCEaBloc_Event, BALANCEaReceive> {
+  BALANCEaBloc_Bloc() : super(BALANCEaReceive()) {
+    on<BALANCEaBloc_Read>((event, emit) {
+      return _BALANCEaBloc_Read(BALANCEaReceive(), emit);
     });
-    on<PHBloc_Flush>((event, emit) {
-      return _PHBloc_Flush(PHReceive(), emit);
+    on<BALANCEaBloc_Flush>((event, emit) {
+      return _BALANCEaBloc_Flush(BALANCEaReceive(), emit);
     });
   }
-  Future<void> _PHBloc_Read(PHReceive toAdd, Emitter<PHReceive> emit) async {
-    PHReceive output = PHReceive();
+  Future<void> _BALANCEaBloc_Read(
+      BALANCEaReceive toAdd, Emitter<BALANCEaReceive> emit) async {
+    BALANCEaReceive output = BALANCEaReceive();
 
-    FreeLoading(PHMAINcontext);
+    FreeLoading(BALANCEaMAINcontext);
 
     final response = await Dio().post(
-      server + "getPH",
+      server + "getBALANCEa",
       data: {},
     );
     if (response.statusCode == 200) {
-      Navigator.pop(PHMAINcontext);
+      Navigator.pop(BALANCEaMAINcontext);
       var databuff = response.data;
       if (databuff != null) {
         output.UserID =
@@ -57,20 +58,21 @@ class PHBloc_Bloc extends Bloc<PHBloc_Event, PHReceive> {
       }
     } else {
       //
-      Navigator.pop(PHMAINcontext);
+      Navigator.pop(BALANCEaMAINcontext);
     }
 
     emit(output);
   }
 
-  Future<void> _PHBloc_Flush(PHReceive toAdd, Emitter<PHReceive> emit) async {
-    PHReceive output = PHReceive();
+  Future<void> _BALANCEaBloc_Flush(
+      BALANCEaReceive toAdd, Emitter<BALANCEaReceive> emit) async {
+    BALANCEaReceive output = BALANCEaReceive();
     emit(output);
   }
 }
 
-class PHReceive {
-  PHReceive({
+class BALANCEaReceive {
+  BALANCEaReceive({
     this.UserID = '',
     this.InstrumentID = '',
     this.Barcode = '',

@@ -37,14 +37,20 @@ class _COCMAINState extends State<COCMAIN> {
     String _UserID = widget.data?.UserID ?? '';
     if (_UserID != '') {
       COCVAR.UserID = _UserID;
+    } else {
+      COCVAR.UserID = '';
     }
     String _InstrumentID = widget.data?.InstrumentID ?? '';
     if (_InstrumentID != '') {
       COCVAR.InstrumentID = _InstrumentID;
+    } else {
+      COCVAR.InstrumentID = '';
     }
     String _Barcode = widget.data?.Barcode ?? '';
     if (_Barcode != '') {
       COCVAR.Barcode = _Barcode;
+    } else {
+      COCVAR.Barcode = '';
     }
 
     COCVAR.SPEChi = widget.data?.SPEChi ?? '';

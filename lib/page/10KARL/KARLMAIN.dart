@@ -1,59 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/BlocEvent/07-1-PHBloc.dart';
-import '../../bloc/BlocEvent/07-2-PHMSG.dart';
+import '../../bloc/BlocEvent/10-1-KARLBloc.dart';
+import '../../bloc/BlocEvent/10-2-KARLMSG.dart';
 import '../../widget/common/ComInputText.dart';
 import '../../widget/common/popup.dart';
 
-import 'SCCVAR.dart';
+import 'KARLVAR.dart';
 
-//context.read<PHBloc_Bloc>().add(VALUEINPUT_CLEAR());
-late BuildContext PHMAINcontext;
+//context.read<KARLBloc_Bloc>().add(VALUEINPUT_CLEAR());
+late BuildContext KARLMAINcontext;
 
-class PHMAIN extends StatefulWidget {
-  PHMAIN({
+class KARLMAIN extends StatefulWidget {
+  KARLMAIN({
     Key? key,
     this.data,
     this.msg,
   }) : super(key: key);
-  PHReceive? data;
+  KARLReceive? data;
   String? msg;
 
   @override
-  State<PHMAIN> createState() => _PHMAINState();
+  State<KARLMAIN> createState() => _KARLMAINState();
 }
 
-class _PHMAINState extends State<PHMAIN> {
+class _KARLMAINState extends State<KARLMAIN> {
   @override
   void initState() {
     super.initState();
-    context.read<PHBloc_Bloc>().add(PHBloc_Read());
+    context.read<KARLBloc_Bloc>().add(KARLBloc_Read());
   }
 
   @override
   Widget build(BuildContext context) {
-    PHMAINcontext = context;
-    PHVAR.iscontrol = true;
+    KARLMAINcontext = context;
+    KARLVAR.iscontrol = true;
     String _UserID = widget.data?.UserID ?? '';
     if (_UserID != '') {
-      PHVAR.UserID = _UserID;
+      KARLVAR.UserID = _UserID;
+    } else {
+      KARLVAR.UserID = '';
     }
     String _InstrumentID = widget.data?.InstrumentID ?? '';
     if (_InstrumentID != '') {
-      PHVAR.InstrumentID = _InstrumentID;
+      KARLVAR.InstrumentID = _InstrumentID;
+    } else {
+      KARLVAR.InstrumentID = '';
     }
     String _Barcode = widget.data?.Barcode ?? '';
     if (_Barcode != '') {
-      PHVAR.Barcode = _Barcode;
+      KARLVAR.Barcode = _Barcode;
+    } else {
+      KARLVAR.Barcode = '';
     }
 
-    PHVAR.SPEChi = widget.data?.SPEChi ?? '';
-    PHVAR.SPEClow = widget.data?.SPEClow ?? '';
+    KARLVAR.SPEChi = widget.data?.SPEChi ?? '';
+    KARLVAR.SPEClow = widget.data?.SPEClow ?? '';
 
-    PHVAR.DataPreview = widget.data?.DataPreview ?? ''; //SEND
-    PHVAR.SEND = widget.data?.SEND ?? '';
-    PHVAR.Result = widget.data?.Result ?? '';
+    KARLVAR.DataPreview = widget.data?.DataPreview ?? ''; //SEND
+    KARLVAR.SEND = widget.data?.SEND ?? '';
+    KARLVAR.Result = widget.data?.Result ?? '';
 
     return Center(
       child: SizedBox(
@@ -69,7 +75,7 @@ class _PHMAINState extends State<PHMAIN> {
                 width: 300,
                 child: Center(
                   child: Text(
-                    "PH",
+                    "KARL",
                     style: TextStyle(fontSize: 36),
                   ),
                 ),
@@ -85,13 +91,13 @@ class _PHMAINState extends State<PHMAIN> {
                     sPlaceholder: "USER ID",
                     height: 40,
                     width: 200,
-                    isContr: PHVAR.iscontrol,
+                    isContr: KARLVAR.iscontrol,
                     fnContr: (input) {
-                      PHVAR.iscontrol = input;
+                      KARLVAR.iscontrol = input;
                     },
-                    sValue: PHVAR.UserID,
+                    sValue: KARLVAR.UserID,
                     returnfunc: (s) {
-                      PHVAR.UserID = s;
+                      KARLVAR.UserID = s;
                     },
                     isEnabled:
                         _UserID == '' && _InstrumentID == '' && _Barcode == '',
@@ -101,7 +107,7 @@ class _PHMAINState extends State<PHMAIN> {
                       if (_UserID == '' &&
                           _InstrumentID == '' &&
                           _Barcode == '') {
-                        context.read<PHMSG_Bloc>().add(PHMSG_UserID());
+                        context.read<KARLMSG_Bloc>().add(KARLMSG_UserID());
                       }
                     },
                     child: Container(
@@ -126,13 +132,13 @@ class _PHMAINState extends State<PHMAIN> {
                     sPlaceholder: "INSTRUMENT",
                     height: 40,
                     width: 200,
-                    isContr: PHVAR.iscontrol,
+                    isContr: KARLVAR.iscontrol,
                     fnContr: (input) {
-                      PHVAR.iscontrol = input;
+                      KARLVAR.iscontrol = input;
                     },
-                    sValue: PHVAR.InstrumentID,
+                    sValue: KARLVAR.InstrumentID,
                     returnfunc: (s) {
-                      PHVAR.InstrumentID = s;
+                      KARLVAR.InstrumentID = s;
                     },
                     isEnabled:
                         _UserID != '' && _InstrumentID == '' && _Barcode == '',
@@ -142,7 +148,7 @@ class _PHMAINState extends State<PHMAIN> {
                       if (_UserID != '' &&
                           _InstrumentID == '' &&
                           _Barcode == '') {
-                        context.read<PHMSG_Bloc>().add(PHMSG_Instrument());
+                        context.read<KARLMSG_Bloc>().add(KARLMSG_Instrument());
                       }
                     },
                     child: Container(
@@ -167,13 +173,13 @@ class _PHMAINState extends State<PHMAIN> {
                     sPlaceholder: "BARCODE",
                     height: 40,
                     width: 200,
-                    isContr: PHVAR.iscontrol,
+                    isContr: KARLVAR.iscontrol,
                     fnContr: (input) {
-                      PHVAR.iscontrol = input;
+                      KARLVAR.iscontrol = input;
                     },
-                    sValue: PHVAR.Barcode,
+                    sValue: KARLVAR.Barcode,
                     returnfunc: (s) {
-                      PHVAR.Barcode = s;
+                      KARLVAR.Barcode = s;
                     },
                     isEnabled:
                         _UserID != '' && _InstrumentID != '' && _Barcode == '',
@@ -183,8 +189,8 @@ class _PHMAINState extends State<PHMAIN> {
                       if (_UserID != '' &&
                           _InstrumentID != '' &&
                           _Barcode == '') {
-                        if (PHVAR.Barcode.length == 18) {
-                          context.read<PHMSG_Bloc>().add(PHMSG_Barcode());
+                        if (KARLVAR.Barcode.length == 18) {
+                          context.read<KARLMSG_Bloc>().add(KARLMSG_Barcode());
                         } else {
                           WORNINGpop(context, ["WRONG BARCODE"], 80, 100);
                         }
@@ -218,12 +224,12 @@ class _PHMAINState extends State<PHMAIN> {
                         // color: Colors.black,
                         border: Border.all(color: Colors.blue, width: 2),
                       ),
-                      child: Center(child: Text(PHVAR.DataPreview)),
+                      child: Center(child: Text(KARLVAR.DataPreview)),
                     ),
                     InkWell(
                       onTap: () {
                         //
-                        context.read<PHBloc_Bloc>().add(PHBloc_Read());
+                        context.read<KARLBloc_Bloc>().add(KARLBloc_Read());
                       },
                       child: Container(
                         height: 40,
@@ -261,10 +267,10 @@ class _PHMAINState extends State<PHMAIN> {
                             height: 5,
                           ),
                           const Center(child: Text('SPEC')),
-                          if (PHVAR.SPEChi != '')
-                            Center(child: Text('MAX:' + PHVAR.SPEChi)),
-                          if (PHVAR.SPEClow != '')
-                            Center(child: Text('MIN:' + PHVAR.SPEClow)),
+                          if (KARLVAR.SPEChi != '')
+                            Center(child: Text('MAX:' + KARLVAR.SPEChi)),
+                          if (KARLVAR.SPEClow != '')
+                            Center(child: Text('MIN:' + KARLVAR.SPEClow)),
                         ],
                       ),
                     ),
@@ -280,7 +286,7 @@ class _PHMAINState extends State<PHMAIN> {
                             height: 5,
                           ),
                           const Center(child: Text('RESULT')),
-                          Center(child: Text(PHVAR.Result)),
+                          Center(child: Text(KARLVAR.Result)),
                         ],
                       ),
                     ),
@@ -292,7 +298,7 @@ class _PHMAINState extends State<PHMAIN> {
               // ),
               // InkWell(
               //   onTap: () {
-              //     context.read<PHMSG_Bloc>().add(PHMSG_Select_Send());
+              //     context.read<KARLMSG_Bloc>().add(KARLMSG_Select_Send());
               //   },
               //   child: Container(
               //     height: 62,
@@ -310,15 +316,15 @@ class _PHMAINState extends State<PHMAIN> {
               ),
               InkWell(
                 onTap: () {
-                  PHVAR.iscontrol = true;
-                  context.read<PHMSG_Bloc>().add(PHMSG_clear());
-                  PHVAR.UserID = '';
-                  PHVAR.InstrumentID = '';
-                  PHVAR.Barcode = '';
+                  KARLVAR.iscontrol = true;
+                  context.read<KARLMSG_Bloc>().add(KARLMSG_clear());
+                  KARLVAR.UserID = '';
+                  KARLVAR.InstrumentID = '';
+                  KARLVAR.Barcode = '';
                   setState(() {
-                    PHVAR.UserID = '';
-                    PHVAR.InstrumentID = '';
-                    PHVAR.Barcode = '';
+                    KARLVAR.UserID = '';
+                    KARLVAR.InstrumentID = '';
+                    KARLVAR.Barcode = '';
                   });
                 },
                 child: Container(
@@ -337,7 +343,7 @@ class _PHMAINState extends State<PHMAIN> {
               ),
               InkWell(
                 onTap: () {
-                  context.read<PHMSG_Bloc>().add(PHMSG_Reject());
+                  context.read<KARLMSG_Bloc>().add(KARLMSG_Reject());
                 },
                 child: Container(
                   height: 30,

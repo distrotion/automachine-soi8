@@ -37,14 +37,20 @@ class _TCCMAINState extends State<TCCMAIN> {
     String _UserID = widget.data?.UserID ?? '';
     if (_UserID != '') {
       TCCVAR.UserID = _UserID;
+    } else {
+      TCCVAR.UserID = '';
     }
     String _InstrumentID = widget.data?.InstrumentID ?? '';
     if (_InstrumentID != '') {
       TCCVAR.InstrumentID = _InstrumentID;
+    } else {
+      TCCVAR.InstrumentID = '';
     }
     String _Barcode = widget.data?.Barcode ?? '';
     if (_Barcode != '') {
       TCCVAR.Barcode = _Barcode;
+    } else {
+      TCCVAR.Barcode = '';
     }
 
     TCCVAR.SPEChi = widget.data?.SPEChi ?? '';

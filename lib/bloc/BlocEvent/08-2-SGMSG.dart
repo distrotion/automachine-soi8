@@ -4,68 +4,68 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/global.dart';
 
-import '../../page/07PH/PHMAIN.dart';
-import '../../page/07PH/PHVAR.dart';
+import '../../page/08SG/SGMAIN.dart';
+import '../../page/08SG/SGVAR.dart';
 import '../../widget/common/Loading.dart';
 import '../cubit/NotificationEvent.dart';
-import '07-1-PHBloc.dart';
+import '08-1-SGBloc.dart';
 
 //-------------------------------------------------
 String server = serverG;
 
-abstract class PHMSG_Event {}
+abstract class SGMSG_Event {}
 
-class PHMSG_UserID extends PHMSG_Event {}
+class SGMSG_UserID extends SGMSG_Event {}
 
-class PHMSG_Instrument extends PHMSG_Event {}
+class SGMSG_Instrument extends SGMSG_Event {}
 
-class PHMSG_Barcode extends PHMSG_Event {}
+class SGMSG_Barcode extends SGMSG_Event {}
 
-class PHMSG_Select_Send extends PHMSG_Event {}
+class SGMSG_Select_Send extends SGMSG_Event {}
 
-class PHMSG_Reject extends PHMSG_Event {}
+class SGMSG_Reject extends SGMSG_Event {}
 
-class PHMSG_clear extends PHMSG_Event {}
+class SGMSG_clear extends SGMSG_Event {}
 
-class PHMSG_Flush extends PHMSG_Event {}
+class SGMSG_Flush extends SGMSG_Event {}
 
-class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
-  PHMSG_Bloc() : super('') {
-    on<PHMSG_UserID>((event, emit) {
-      return _PHMSG_UserID('', emit);
+class SGMSG_Bloc extends Bloc<SGMSG_Event, String> {
+  SGMSG_Bloc() : super('') {
+    on<SGMSG_UserID>((event, emit) {
+      return _SGMSG_UserID('', emit);
     });
 
-    on<PHMSG_Instrument>((event, emit) {
-      return _PHMSG_Instrument('', emit);
+    on<SGMSG_Instrument>((event, emit) {
+      return _SGMSG_Instrument('', emit);
     });
 
-    on<PHMSG_Barcode>((event, emit) {
-      return _PHMSG_Barcode('', emit);
+    on<SGMSG_Barcode>((event, emit) {
+      return _SGMSG_Barcode('', emit);
     });
 
-    on<PHMSG_Select_Send>((event, emit) {
-      return _PHMSG_Select_Send('', emit);
+    on<SGMSG_Select_Send>((event, emit) {
+      return _SGMSG_Select_Send('', emit);
     });
 
-    on<PHMSG_Reject>((event, emit) {
-      return _PHMSG_Reject('', emit);
+    on<SGMSG_Reject>((event, emit) {
+      return _SGMSG_Reject('', emit);
     });
 
-    on<PHMSG_clear>((event, emit) {
-      return _PHMSG_clear('', emit);
+    on<SGMSG_clear>((event, emit) {
+      return _SGMSG_clear('', emit);
     });
 
-    on<PHMSG_Flush>((event, emit) {
-      return _PHMSG_Flush('', emit);
+    on<SGMSG_Flush>((event, emit) {
+      return _SGMSG_Flush('', emit);
     });
   }
-  Future<void> _PHMSG_UserID(String toAdd, Emitter<String> emit) async {
+  Future<void> _SGMSG_UserID(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(SGMAINcontext);
 
     final response = await Dio().post(
-      server + "setUserID_PH",
-      data: {"UserID": PHVAR.UserID},
+      server + "setUserID_SG",
+      data: {"UserID": SGVAR.UserID},
     );
     if (response.statusCode == 200) {
       var databuff = response.data;
@@ -79,19 +79,19 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(SGMAINcontext);
+    SGMAINcontext.read<SGBloc_Bloc>().add(SGBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Instrument(String toAdd, Emitter<String> emit) async {
+  Future<void> _SGMSG_Instrument(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(SGMAINcontext);
 
     final response = await Dio().post(
-      server + "setInstrumentID_PH",
+      server + "setInstrumentID_SG",
       data: {
-        "InstrumentID": PHVAR.InstrumentID,
+        "InstrumentID": SGVAR.InstrumentID,
       },
     );
     if (response.statusCode == 200) {
@@ -108,19 +108,19 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(SGMAINcontext);
+    SGMAINcontext.read<SGBloc_Bloc>().add(SGBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Barcode(String toAdd, Emitter<String> emit) async {
+  Future<void> _SGMSG_Barcode(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(SGMAINcontext);
 
     final response = await Dio().post(
-      server + "setBarcode_PH",
+      server + "setBarcode_SG",
       data: {
-        "Barcode": PHVAR.Barcode,
+        "Barcode": SGVAR.Barcode,
       },
     );
     if (response.statusCode == 200) {
@@ -140,17 +140,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(SGMAINcontext);
+    SGMAINcontext.read<SGBloc_Bloc>().add(SGBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Select_W1(String toAdd, Emitter<String> emit) async {
+  Future<void> _SGMSG_Select_W1(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(SGMAINcontext);
 
     final response = await Dio().post(
-      server + "PH_W1",
+      server + "SG_W1",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -166,17 +166,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(SGMAINcontext);
+    SGMAINcontext.read<SGBloc_Bloc>().add(SGBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Select_Send(String toAdd, Emitter<String> emit) async {
+  Future<void> _SGMSG_Select_Send(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(SGMAINcontext);
 
     final response = await Dio().post(
-      server + "PH_SEND",
+      server + "SG_SEND",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -195,17 +195,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(SGMAINcontext);
+    SGMAINcontext.read<SGBloc_Bloc>().add(SGBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Reject(String toAdd, Emitter<String> emit) async {
+  Future<void> _SGMSG_Reject(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(SGMAINcontext);
 
     final response = await Dio().post(
-      server + "PH_REJ",
+      server + "SG_REJ",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -220,17 +220,17 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(SGMAINcontext);
+    SGMAINcontext.read<SGBloc_Bloc>().add(SGBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_clear(String toAdd, Emitter<String> emit) async {
+  Future<void> _SGMSG_clear(String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PHMAINcontext);
+    FreeLoading(SGMAINcontext);
 
     final response = await Dio().post(
-      server + "PH_clear",
+      server + "SG_clear",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -245,12 +245,12 @@ class PHMSG_Bloc extends Bloc<PHMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PHMAINcontext);
-    PHMAINcontext.read<PHBloc_Bloc>().add(PHBloc_Read());
+    Navigator.pop(SGMAINcontext);
+    SGMAINcontext.read<SGBloc_Bloc>().add(SGBloc_Read());
     emit(output);
   }
 
-  Future<void> _PHMSG_Flush(String toAdd, Emitter<String> emit) async {
+  Future<void> _SGMSG_Flush(String toAdd, Emitter<String> emit) async {
     String output = '';
     emit(output);
   }

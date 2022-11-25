@@ -4,38 +4,39 @@ import 'package:dio/dio.dart';
 
 import '../../data/global.dart';
 
-import '../../page/07PH/PHMAIN.dart';
+import '../../page/10KARL/KARLMAIN.dart';
 import '../../widget/common/Loading.dart';
 //-------------------------------------------------
 
 String server = serverG;
 
-abstract class PHBloc_Event {}
+abstract class KARLBloc_Event {}
 
-class PHBloc_Read extends PHBloc_Event {}
+class KARLBloc_Read extends KARLBloc_Event {}
 
-class PHBloc_Flush extends PHBloc_Event {}
+class KARLBloc_Flush extends KARLBloc_Event {}
 
-class PHBloc_Bloc extends Bloc<PHBloc_Event, PHReceive> {
-  PHBloc_Bloc() : super(PHReceive()) {
-    on<PHBloc_Read>((event, emit) {
-      return _PHBloc_Read(PHReceive(), emit);
+class KARLBloc_Bloc extends Bloc<KARLBloc_Event, KARLReceive> {
+  KARLBloc_Bloc() : super(KARLReceive()) {
+    on<KARLBloc_Read>((event, emit) {
+      return _KARLBloc_Read(KARLReceive(), emit);
     });
-    on<PHBloc_Flush>((event, emit) {
-      return _PHBloc_Flush(PHReceive(), emit);
+    on<KARLBloc_Flush>((event, emit) {
+      return _KARLBloc_Flush(KARLReceive(), emit);
     });
   }
-  Future<void> _PHBloc_Read(PHReceive toAdd, Emitter<PHReceive> emit) async {
-    PHReceive output = PHReceive();
+  Future<void> _KARLBloc_Read(
+      KARLReceive toAdd, Emitter<KARLReceive> emit) async {
+    KARLReceive output = KARLReceive();
 
-    FreeLoading(PHMAINcontext);
+    FreeLoading(KARLMAINcontext);
 
     final response = await Dio().post(
-      server + "getPH",
+      server + "getKARL",
       data: {},
     );
     if (response.statusCode == 200) {
-      Navigator.pop(PHMAINcontext);
+      Navigator.pop(KARLMAINcontext);
       var databuff = response.data;
       if (databuff != null) {
         output.UserID =
@@ -57,20 +58,21 @@ class PHBloc_Bloc extends Bloc<PHBloc_Event, PHReceive> {
       }
     } else {
       //
-      Navigator.pop(PHMAINcontext);
+      Navigator.pop(KARLMAINcontext);
     }
 
     emit(output);
   }
 
-  Future<void> _PHBloc_Flush(PHReceive toAdd, Emitter<PHReceive> emit) async {
-    PHReceive output = PHReceive();
+  Future<void> _KARLBloc_Flush(
+      KARLReceive toAdd, Emitter<KARLReceive> emit) async {
+    KARLReceive output = KARLReceive();
     emit(output);
   }
 }
 
-class PHReceive {
-  PHReceive({
+class KARLReceive {
+  KARLReceive({
     this.UserID = '',
     this.InstrumentID = '',
     this.Barcode = '',

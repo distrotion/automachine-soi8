@@ -1,64 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/BlocEvent/06-1-SCCBloc.dart';
-import '../../bloc/BlocEvent/06-2-SCCMSG.dart';
+import '../../bloc/BlocEvent/11-1-BALANCEaBloc.dart';
+import '../../bloc/BlocEvent/11-2-BALANCEaMSG.dart';
 import '../../widget/common/ComInputText.dart';
 import '../../widget/common/popup.dart';
-import 'SCCVAR.dart';
 
-//context.read<SCCBloc_Bloc>().add(VALUEINPUT_CLEAR());
-late BuildContext SCCMAINcontext;
+import 'BALANCEaVAR.dart';
 
-class SCCMAIN extends StatefulWidget {
-  SCCMAIN({
+//context.read<BALANCEaBloc_Bloc>().add(VALUEINPUT_CLEAR());
+late BuildContext BALANCEaMAINcontext;
+
+class BALANCEaMAIN extends StatefulWidget {
+  BALANCEaMAIN({
     Key? key,
     this.data,
     this.msg,
   }) : super(key: key);
-  SCCReceive? data;
+  BALANCEaReceive? data;
   String? msg;
 
   @override
-  State<SCCMAIN> createState() => _SCCMAINState();
+  State<BALANCEaMAIN> createState() => _BALANCEaMAINState();
 }
 
-class _SCCMAINState extends State<SCCMAIN> {
+class _BALANCEaMAINState extends State<BALANCEaMAIN> {
   @override
   void initState() {
     super.initState();
-    context.read<SCCBloc_Bloc>().add(SCCBloc_Read());
+    context.read<BALANCEaBloc_Bloc>().add(BALANCEaBloc_Read());
   }
 
   @override
   Widget build(BuildContext context) {
-    SCCMAINcontext = context;
-    SCCVAR.iscontrol = true;
+    BALANCEaMAINcontext = context;
+    BALANCEaVAR.iscontrol = true;
     String _UserID = widget.data?.UserID ?? '';
     if (_UserID != '') {
-      SCCVAR.UserID = _UserID;
+      BALANCEaVAR.UserID = _UserID;
     } else {
-      SCCVAR.UserID = '';
+      BALANCEaVAR.UserID = '';
     }
     String _InstrumentID = widget.data?.InstrumentID ?? '';
     if (_InstrumentID != '') {
-      SCCVAR.InstrumentID = _InstrumentID;
+      BALANCEaVAR.InstrumentID = _InstrumentID;
     } else {
-      SCCVAR.InstrumentID = '';
+      BALANCEaVAR.InstrumentID = '';
     }
     String _Barcode = widget.data?.Barcode ?? '';
     if (_Barcode != '') {
-      SCCVAR.Barcode = _Barcode;
+      BALANCEaVAR.Barcode = _Barcode;
     } else {
-      SCCVAR.Barcode = '';
+      BALANCEaVAR.Barcode = '';
     }
 
-    SCCVAR.SPEChi = widget.data?.SPEChi ?? '';
-    SCCVAR.SPEClow = widget.data?.SPEClow ?? '';
+    BALANCEaVAR.SPEChi = widget.data?.SPEChi ?? '';
+    BALANCEaVAR.SPEClow = widget.data?.SPEClow ?? '';
 
-    SCCVAR.DataPreview = widget.data?.DataPreview ?? ''; //SEND
-    SCCVAR.SEND = widget.data?.SEND ?? '';
-    SCCVAR.Result = widget.data?.Result ?? '';
+    BALANCEaVAR.DataPreview = widget.data?.DataPreview ?? ''; //SEND
+    BALANCEaVAR.SEND = widget.data?.SEND ?? '';
+    BALANCEaVAR.Result = widget.data?.Result ?? '';
 
     return Center(
       child: SizedBox(
@@ -74,7 +75,7 @@ class _SCCMAINState extends State<SCCMAIN> {
                 width: 300,
                 child: Center(
                   child: Text(
-                    "SCC",
+                    "BALANCEa",
                     style: TextStyle(fontSize: 36),
                   ),
                 ),
@@ -90,13 +91,13 @@ class _SCCMAINState extends State<SCCMAIN> {
                     sPlaceholder: "USER ID",
                     height: 40,
                     width: 200,
-                    isContr: SCCVAR.iscontrol,
+                    isContr: BALANCEaVAR.iscontrol,
                     fnContr: (input) {
-                      SCCVAR.iscontrol = input;
+                      BALANCEaVAR.iscontrol = input;
                     },
-                    sValue: SCCVAR.UserID,
+                    sValue: BALANCEaVAR.UserID,
                     returnfunc: (s) {
-                      SCCVAR.UserID = s;
+                      BALANCEaVAR.UserID = s;
                     },
                     isEnabled:
                         _UserID == '' && _InstrumentID == '' && _Barcode == '',
@@ -106,7 +107,9 @@ class _SCCMAINState extends State<SCCMAIN> {
                       if (_UserID == '' &&
                           _InstrumentID == '' &&
                           _Barcode == '') {
-                        context.read<SCCMSG_Bloc>().add(SCCMSG_UserID());
+                        context
+                            .read<BALANCEaMSG_Bloc>()
+                            .add(BALANCEaMSG_UserID());
                       }
                     },
                     child: Container(
@@ -131,13 +134,13 @@ class _SCCMAINState extends State<SCCMAIN> {
                     sPlaceholder: "INSTRUMENT",
                     height: 40,
                     width: 200,
-                    isContr: SCCVAR.iscontrol,
+                    isContr: BALANCEaVAR.iscontrol,
                     fnContr: (input) {
-                      SCCVAR.iscontrol = input;
+                      BALANCEaVAR.iscontrol = input;
                     },
-                    sValue: SCCVAR.InstrumentID,
+                    sValue: BALANCEaVAR.InstrumentID,
                     returnfunc: (s) {
-                      SCCVAR.InstrumentID = s;
+                      BALANCEaVAR.InstrumentID = s;
                     },
                     isEnabled:
                         _UserID != '' && _InstrumentID == '' && _Barcode == '',
@@ -147,7 +150,9 @@ class _SCCMAINState extends State<SCCMAIN> {
                       if (_UserID != '' &&
                           _InstrumentID == '' &&
                           _Barcode == '') {
-                        context.read<SCCMSG_Bloc>().add(SCCMSG_Instrument());
+                        context
+                            .read<BALANCEaMSG_Bloc>()
+                            .add(BALANCEaMSG_Instrument());
                       }
                     },
                     child: Container(
@@ -172,13 +177,13 @@ class _SCCMAINState extends State<SCCMAIN> {
                     sPlaceholder: "BARCODE",
                     height: 40,
                     width: 200,
-                    isContr: SCCVAR.iscontrol,
+                    isContr: BALANCEaVAR.iscontrol,
                     fnContr: (input) {
-                      SCCVAR.iscontrol = input;
+                      BALANCEaVAR.iscontrol = input;
                     },
-                    sValue: SCCVAR.Barcode,
+                    sValue: BALANCEaVAR.Barcode,
                     returnfunc: (s) {
-                      SCCVAR.Barcode = s;
+                      BALANCEaVAR.Barcode = s;
                     },
                     isEnabled:
                         _UserID != '' && _InstrumentID != '' && _Barcode == '',
@@ -188,8 +193,10 @@ class _SCCMAINState extends State<SCCMAIN> {
                       if (_UserID != '' &&
                           _InstrumentID != '' &&
                           _Barcode == '') {
-                        if (SCCVAR.Barcode.length == 18) {
-                          context.read<SCCMSG_Bloc>().add(SCCMSG_Barcode());
+                        if (BALANCEaVAR.Barcode.length == 18) {
+                          context
+                              .read<BALANCEaMSG_Bloc>()
+                              .add(BALANCEaMSG_Barcode());
                         } else {
                           WORNINGpop(context, ["WRONG BARCODE"], 80, 100);
                         }
@@ -223,12 +230,14 @@ class _SCCMAINState extends State<SCCMAIN> {
                         // color: Colors.black,
                         border: Border.all(color: Colors.blue, width: 2),
                       ),
-                      child: Center(child: Text(SCCVAR.DataPreview)),
+                      child: Center(child: Text(BALANCEaVAR.DataPreview)),
                     ),
                     InkWell(
                       onTap: () {
                         //
-                        context.read<SCCBloc_Bloc>().add(SCCBloc_Read());
+                        context
+                            .read<BALANCEaBloc_Bloc>()
+                            .add(BALANCEaBloc_Read());
                       },
                       child: Container(
                         height: 40,
@@ -266,10 +275,10 @@ class _SCCMAINState extends State<SCCMAIN> {
                             height: 5,
                           ),
                           const Center(child: Text('SPEC')),
-                          if (SCCVAR.SPEChi != '')
-                            Center(child: Text('MAX:' + SCCVAR.SPEChi)),
-                          if (SCCVAR.SPEClow != '')
-                            Center(child: Text('MIN:' + SCCVAR.SPEClow)),
+                          if (BALANCEaVAR.SPEChi != '')
+                            Center(child: Text('MAX:' + BALANCEaVAR.SPEChi)),
+                          if (BALANCEaVAR.SPEClow != '')
+                            Center(child: Text('MIN:' + BALANCEaVAR.SPEClow)),
                         ],
                       ),
                     ),
@@ -285,7 +294,7 @@ class _SCCMAINState extends State<SCCMAIN> {
                             height: 5,
                           ),
                           const Center(child: Text('RESULT')),
-                          Center(child: Text(SCCVAR.Result)),
+                          Center(child: Text(BALANCEaVAR.Result)),
                         ],
                       ),
                     ),
@@ -297,7 +306,7 @@ class _SCCMAINState extends State<SCCMAIN> {
               // ),
               // InkWell(
               //   onTap: () {
-              //     context.read<SCCMSG_Bloc>().add(SCCMSG_Select_Send());
+              //     context.read<BALANCEaMSG_Bloc>().add(BALANCEaMSG_Select_Send());
               //   },
               //   child: Container(
               //     height: 62,
@@ -315,12 +324,16 @@ class _SCCMAINState extends State<SCCMAIN> {
               ),
               InkWell(
                 onTap: () {
-                  SCCVAR.iscontrol = true;
-                  context.read<SCCMSG_Bloc>().add(SCCMSG_clear());
-                  SCCVAR.UserID = '';
-                  SCCVAR.InstrumentID = '';
-                  SCCVAR.Barcode = '';
-                  setState(() {});
+                  BALANCEaVAR.iscontrol = true;
+                  context.read<BALANCEaMSG_Bloc>().add(BALANCEaMSG_clear());
+                  BALANCEaVAR.UserID = '';
+                  BALANCEaVAR.InstrumentID = '';
+                  BALANCEaVAR.Barcode = '';
+                  setState(() {
+                    BALANCEaVAR.UserID = '';
+                    BALANCEaVAR.InstrumentID = '';
+                    BALANCEaVAR.Barcode = '';
+                  });
                 },
                 child: Container(
                   height: 62,
@@ -338,11 +351,7 @@ class _SCCMAINState extends State<SCCMAIN> {
               ),
               InkWell(
                 onTap: () {
-                  context.read<SCCMSG_Bloc>().add(SCCMSG_Reject());
-                  SCCVAR.UserID = '';
-                  SCCVAR.InstrumentID = '';
-                  SCCVAR.Barcode = '';
-                  setState(() {});
+                  context.read<BALANCEaMSG_Bloc>().add(BALANCEaMSG_Reject());
                 },
                 child: Container(
                   height: 30,

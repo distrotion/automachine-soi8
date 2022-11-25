@@ -4,38 +4,39 @@ import 'package:dio/dio.dart';
 
 import '../../data/global.dart';
 
-import '../../page/07PH/PHMAIN.dart';
+import '../../page/09DENSITY/DENSITYMAIN.dart';
 import '../../widget/common/Loading.dart';
 //-------------------------------------------------
 
 String server = serverG;
 
-abstract class PHBloc_Event {}
+abstract class DENSITYBloc_Event {}
 
-class PHBloc_Read extends PHBloc_Event {}
+class DENSITYBloc_Read extends DENSITYBloc_Event {}
 
-class PHBloc_Flush extends PHBloc_Event {}
+class DENSITYBloc_Flush extends DENSITYBloc_Event {}
 
-class PHBloc_Bloc extends Bloc<PHBloc_Event, PHReceive> {
-  PHBloc_Bloc() : super(PHReceive()) {
-    on<PHBloc_Read>((event, emit) {
-      return _PHBloc_Read(PHReceive(), emit);
+class DENSITYBloc_Bloc extends Bloc<DENSITYBloc_Event, DENSITYReceive> {
+  DENSITYBloc_Bloc() : super(DENSITYReceive()) {
+    on<DENSITYBloc_Read>((event, emit) {
+      return _DENSITYBloc_Read(DENSITYReceive(), emit);
     });
-    on<PHBloc_Flush>((event, emit) {
-      return _PHBloc_Flush(PHReceive(), emit);
+    on<DENSITYBloc_Flush>((event, emit) {
+      return _DENSITYBloc_Flush(DENSITYReceive(), emit);
     });
   }
-  Future<void> _PHBloc_Read(PHReceive toAdd, Emitter<PHReceive> emit) async {
-    PHReceive output = PHReceive();
+  Future<void> _DENSITYBloc_Read(
+      DENSITYReceive toAdd, Emitter<DENSITYReceive> emit) async {
+    DENSITYReceive output = DENSITYReceive();
 
-    FreeLoading(PHMAINcontext);
+    FreeLoading(DENSITYMAINcontext);
 
     final response = await Dio().post(
-      server + "getPH",
+      server + "getDENSITY",
       data: {},
     );
     if (response.statusCode == 200) {
-      Navigator.pop(PHMAINcontext);
+      Navigator.pop(DENSITYMAINcontext);
       var databuff = response.data;
       if (databuff != null) {
         output.UserID =
@@ -57,20 +58,21 @@ class PHBloc_Bloc extends Bloc<PHBloc_Event, PHReceive> {
       }
     } else {
       //
-      Navigator.pop(PHMAINcontext);
+      Navigator.pop(DENSITYMAINcontext);
     }
 
     emit(output);
   }
 
-  Future<void> _PHBloc_Flush(PHReceive toAdd, Emitter<PHReceive> emit) async {
-    PHReceive output = PHReceive();
+  Future<void> _DENSITYBloc_Flush(
+      DENSITYReceive toAdd, Emitter<DENSITYReceive> emit) async {
+    DENSITYReceive output = DENSITYReceive();
     emit(output);
   }
 }
 
-class PHReceive {
-  PHReceive({
+class DENSITYReceive {
+  DENSITYReceive({
     this.UserID = '',
     this.InstrumentID = '',
     this.Barcode = '',
