@@ -10,34 +10,34 @@ import '../../widget/common/Loading.dart';
 
 String server = serverG;
 
-abstract class PATICLESIZEBloc_Event {}
+abstract class PARTICLESIZEBloc_Event {}
 
-class PATICLESIZEBloc_Read extends PATICLESIZEBloc_Event {}
+class PARTICLESIZEBloc_Read extends PARTICLESIZEBloc_Event {}
 
-class PATICLESIZEBloc_Flush extends PATICLESIZEBloc_Event {}
+class PARTICLESIZEBloc_Flush extends PARTICLESIZEBloc_Event {}
 
-class PATICLESIZEBloc_Bloc
-    extends Bloc<PATICLESIZEBloc_Event, PATICLESIZEReceive> {
-  PATICLESIZEBloc_Bloc() : super(PATICLESIZEReceive()) {
-    on<PATICLESIZEBloc_Read>((event, emit) {
-      return _PATICLESIZEBloc_Read(PATICLESIZEReceive(), emit);
+class PARTICLESIZEBloc_Bloc
+    extends Bloc<PARTICLESIZEBloc_Event, PARTICLESIZEReceive> {
+  PARTICLESIZEBloc_Bloc() : super(PARTICLESIZEReceive()) {
+    on<PARTICLESIZEBloc_Read>((event, emit) {
+      return _PARTICLESIZEBloc_Read(PARTICLESIZEReceive(), emit);
     });
-    on<PATICLESIZEBloc_Flush>((event, emit) {
-      return _PATICLESIZEBloc_Flush(PATICLESIZEReceive(), emit);
+    on<PARTICLESIZEBloc_Flush>((event, emit) {
+      return _PARTICLESIZEBloc_Flush(PARTICLESIZEReceive(), emit);
     });
   }
-  Future<void> _PATICLESIZEBloc_Read(
-      PATICLESIZEReceive toAdd, Emitter<PATICLESIZEReceive> emit) async {
-    PATICLESIZEReceive output = PATICLESIZEReceive();
+  Future<void> _PARTICLESIZEBloc_Read(
+      PARTICLESIZEReceive toAdd, Emitter<PARTICLESIZEReceive> emit) async {
+    PARTICLESIZEReceive output = PARTICLESIZEReceive();
 
-    FreeLoading(PATICLESIZEMAINcontext);
+    FreeLoading(PARTICLESIZEMAINcontext);
 
     final response = await Dio().post(
-      server + "getPATICLESIZE",
+      server + "getPARTICLESIZE",
       data: {},
     );
     if (response.statusCode == 200) {
-      Navigator.pop(PATICLESIZEMAINcontext);
+      Navigator.pop(PARTICLESIZEMAINcontext);
       var databuff = response.data;
       if (databuff != null) {
         output.UserID =
@@ -59,21 +59,21 @@ class PATICLESIZEBloc_Bloc
       }
     } else {
       //
-      Navigator.pop(PATICLESIZEMAINcontext);
+      Navigator.pop(PARTICLESIZEMAINcontext);
     }
 
     emit(output);
   }
 
-  Future<void> _PATICLESIZEBloc_Flush(
-      PATICLESIZEReceive toAdd, Emitter<PATICLESIZEReceive> emit) async {
-    PATICLESIZEReceive output = PATICLESIZEReceive();
+  Future<void> _PARTICLESIZEBloc_Flush(
+      PARTICLESIZEReceive toAdd, Emitter<PARTICLESIZEReceive> emit) async {
+    PARTICLESIZEReceive output = PARTICLESIZEReceive();
     emit(output);
   }
 }
 
-class PATICLESIZEReceive {
-  PATICLESIZEReceive({
+class PARTICLESIZEReceive {
+  PARTICLESIZEReceive({
     this.UserID = '',
     this.InstrumentID = '',
     this.Barcode = '',

@@ -8,58 +8,58 @@ import '../../widget/common/ComInputText.dart';
 import '../../widget/common/popup.dart';
 import 'PARTICALSIZEVAR.dart';
 
-//context.read<PATICLESIZEBloc_Bloc>().add(VALUEINPUT_CLEAR());
-late BuildContext PATICLESIZEMAINcontext;
+//context.read<PARTICLESIZEBloc_Bloc>().add(VALUEINPUT_CLEAR());
+late BuildContext PARTICLESIZEMAINcontext;
 
-class PATICLESIZEMAIN extends StatefulWidget {
-  PATICLESIZEMAIN({
+class PARTICLESIZEMAIN extends StatefulWidget {
+  PARTICLESIZEMAIN({
     Key? key,
     this.data,
     this.msg,
   }) : super(key: key);
-  PATICLESIZEReceive? data;
+  PARTICLESIZEReceive? data;
   String? msg;
 
   @override
-  State<PATICLESIZEMAIN> createState() => _PATICLESIZEMAINState();
+  State<PARTICLESIZEMAIN> createState() => _PARTICLESIZEMAINState();
 }
 
-class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
+class _PARTICLESIZEMAINState extends State<PARTICLESIZEMAIN> {
   @override
   void initState() {
     super.initState();
-    context.read<PATICLESIZEBloc_Bloc>().add(PATICLESIZEBloc_Read());
+    context.read<PARTICLESIZEBloc_Bloc>().add(PARTICLESIZEBloc_Read());
   }
 
   @override
   Widget build(BuildContext context) {
-    PATICLESIZEMAINcontext = context;
-    PATICLESIZEVAR.iscontrol = true;
+    PARTICLESIZEMAINcontext = context;
+    PARTICLESIZEVAR.iscontrol = true;
     String _UserID = widget.data?.UserID ?? '';
     if (_UserID != '') {
-      PATICLESIZEVAR.UserID = _UserID;
+      PARTICLESIZEVAR.UserID = _UserID;
     } else {
-      PATICLESIZEVAR.UserID = '';
+      PARTICLESIZEVAR.UserID = '';
     }
     String _InstrumentID = widget.data?.InstrumentID ?? '';
     if (_InstrumentID != '') {
-      PATICLESIZEVAR.InstrumentID = _InstrumentID;
+      PARTICLESIZEVAR.InstrumentID = _InstrumentID;
     } else {
-      PATICLESIZEVAR.InstrumentID = '';
+      PARTICLESIZEVAR.InstrumentID = '';
     }
     String _Barcode = widget.data?.Barcode ?? '';
     if (_Barcode != '') {
-      PATICLESIZEVAR.Barcode = _Barcode;
+      PARTICLESIZEVAR.Barcode = _Barcode;
     } else {
-      PATICLESIZEVAR.Barcode = '';
+      PARTICLESIZEVAR.Barcode = '';
     }
 
-    PATICLESIZEVAR.SPEChi = widget.data?.SPEChi ?? '';
-    PATICLESIZEVAR.SPEClow = widget.data?.SPEClow ?? '';
+    PARTICLESIZEVAR.SPEChi = widget.data?.SPEChi ?? '';
+    PARTICLESIZEVAR.SPEClow = widget.data?.SPEClow ?? '';
 
-    PATICLESIZEVAR.DataPreview = widget.data?.DataPreview ?? ''; //SEND
-    PATICLESIZEVAR.SEND = widget.data?.SEND ?? '';
-    PATICLESIZEVAR.Result = widget.data?.Result ?? '';
+    PARTICLESIZEVAR.DataPreview = widget.data?.DataPreview ?? ''; //SEND
+    PARTICLESIZEVAR.SEND = widget.data?.SEND ?? '';
+    PARTICLESIZEVAR.Result = widget.data?.Result ?? '';
 
     return Center(
       child: SizedBox(
@@ -75,7 +75,7 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
                 width: 300,
                 child: Center(
                   child: Text(
-                    "PATICLESIZE",
+                    "PARTICLESIZE",
                     style: TextStyle(fontSize: 36),
                   ),
                 ),
@@ -91,13 +91,13 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
                     sPlaceholder: "USER ID",
                     height: 40,
                     width: 200,
-                    isContr: PATICLESIZEVAR.iscontrol,
+                    isContr: PARTICLESIZEVAR.iscontrol,
                     fnContr: (input) {
-                      PATICLESIZEVAR.iscontrol = input;
+                      PARTICLESIZEVAR.iscontrol = input;
                     },
-                    sValue: PATICLESIZEVAR.UserID,
+                    sValue: PARTICLESIZEVAR.UserID,
                     returnfunc: (s) {
-                      PATICLESIZEVAR.UserID = s;
+                      PARTICLESIZEVAR.UserID = s;
                     },
                     isEnabled:
                         _UserID == '' && _InstrumentID == '' && _Barcode == '',
@@ -108,8 +108,8 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
                           _InstrumentID == '' &&
                           _Barcode == '') {
                         context
-                            .read<PATICLESIZEMSG_Bloc>()
-                            .add(PATICLESIZEMSG_UserID());
+                            .read<PARTICLESIZEMSG_Bloc>()
+                            .add(PARTICLESIZEMSG_UserID());
                       }
                     },
                     child: Container(
@@ -134,13 +134,13 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
                     sPlaceholder: "INSTRUMENT",
                     height: 40,
                     width: 200,
-                    isContr: PATICLESIZEVAR.iscontrol,
+                    isContr: PARTICLESIZEVAR.iscontrol,
                     fnContr: (input) {
-                      PATICLESIZEVAR.iscontrol = input;
+                      PARTICLESIZEVAR.iscontrol = input;
                     },
-                    sValue: PATICLESIZEVAR.InstrumentID,
+                    sValue: PARTICLESIZEVAR.InstrumentID,
                     returnfunc: (s) {
-                      PATICLESIZEVAR.InstrumentID = s;
+                      PARTICLESIZEVAR.InstrumentID = s;
                     },
                     isEnabled:
                         _UserID != '' && _InstrumentID == '' && _Barcode == '',
@@ -151,8 +151,8 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
                           _InstrumentID == '' &&
                           _Barcode == '') {
                         context
-                            .read<PATICLESIZEMSG_Bloc>()
-                            .add(PATICLESIZEMSG_Instrument());
+                            .read<PARTICLESIZEMSG_Bloc>()
+                            .add(PARTICLESIZEMSG_Instrument());
                       }
                     },
                     child: Container(
@@ -177,13 +177,13 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
                     sPlaceholder: "BARCODE",
                     height: 40,
                     width: 200,
-                    isContr: PATICLESIZEVAR.iscontrol,
+                    isContr: PARTICLESIZEVAR.iscontrol,
                     fnContr: (input) {
-                      PATICLESIZEVAR.iscontrol = input;
+                      PARTICLESIZEVAR.iscontrol = input;
                     },
-                    sValue: PATICLESIZEVAR.Barcode,
+                    sValue: PARTICLESIZEVAR.Barcode,
                     returnfunc: (s) {
-                      PATICLESIZEVAR.Barcode = s;
+                      PARTICLESIZEVAR.Barcode = s;
                     },
                     isEnabled:
                         _UserID != '' && _InstrumentID != '' && _Barcode == '',
@@ -193,10 +193,10 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
                       if (_UserID != '' &&
                           _InstrumentID != '' &&
                           _Barcode == '') {
-                        if (PATICLESIZEVAR.Barcode.length == 18) {
+                        if (PARTICLESIZEVAR.Barcode.length == 18) {
                           context
-                              .read<PATICLESIZEMSG_Bloc>()
-                              .add(PATICLESIZEMSG_Barcode());
+                              .read<PARTICLESIZEMSG_Bloc>()
+                              .add(PARTICLESIZEMSG_Barcode());
                         } else {
                           WORNINGpop(context, ["WRONG BARCODE"], 80, 100);
                         }
@@ -230,14 +230,14 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
                         // color: Colors.black,
                         border: Border.all(color: Colors.blue, width: 2),
                       ),
-                      child: Center(child: Text(PATICLESIZEVAR.DataPreview)),
+                      child: Center(child: Text(PARTICLESIZEVAR.DataPreview)),
                     ),
                     InkWell(
                       onTap: () {
                         //
                         context
-                            .read<PATICLESIZEBloc_Bloc>()
-                            .add(PATICLESIZEBloc_Read());
+                            .read<PARTICLESIZEBloc_Bloc>()
+                            .add(PARTICLESIZEBloc_Read());
                       },
                       child: Container(
                         height: 40,
@@ -275,11 +275,12 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
                             height: 5,
                           ),
                           const Center(child: Text('SPEC')),
-                          if (PATICLESIZEVAR.SPEChi != '')
-                            Center(child: Text('MAX:' + PATICLESIZEVAR.SPEChi)),
-                          if (PATICLESIZEVAR.SPEClow != '')
+                          if (PARTICLESIZEVAR.SPEChi != '')
                             Center(
-                                child: Text('MIN:' + PATICLESIZEVAR.SPEClow)),
+                                child: Text('MAX:' + PARTICLESIZEVAR.SPEChi)),
+                          if (PARTICLESIZEVAR.SPEClow != '')
+                            Center(
+                                child: Text('MIN:' + PARTICLESIZEVAR.SPEClow)),
                         ],
                       ),
                     ),
@@ -295,7 +296,7 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
                             height: 5,
                           ),
                           const Center(child: Text('RESULT')),
-                          Center(child: Text(PATICLESIZEVAR.Result)),
+                          Center(child: Text(PARTICLESIZEVAR.Result)),
                         ],
                       ),
                     ),
@@ -307,7 +308,7 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
               // ),
               // InkWell(
               //   onTap: () {
-              //     context.read<PATICLESIZEMSG_Bloc>().add(PATICLESIZEMSG_Select_Send());
+              //     context.read<PARTICLESIZEMSG_Bloc>().add(PARTICLESIZEMSG_Select_Send());
               //   },
               //   child: Container(
               //     height: 62,
@@ -325,17 +326,17 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
               ),
               InkWell(
                 onTap: () {
-                  PATICLESIZEVAR.iscontrol = true;
+                  PARTICLESIZEVAR.iscontrol = true;
                   context
-                      .read<PATICLESIZEMSG_Bloc>()
-                      .add(PATICLESIZEMSG_clear());
-                  PATICLESIZEVAR.UserID = '';
-                  PATICLESIZEVAR.InstrumentID = '';
-                  PATICLESIZEVAR.Barcode = '';
+                      .read<PARTICLESIZEMSG_Bloc>()
+                      .add(PARTICLESIZEMSG_clear());
+                  PARTICLESIZEVAR.UserID = '';
+                  PARTICLESIZEVAR.InstrumentID = '';
+                  PARTICLESIZEVAR.Barcode = '';
                   setState(() {
-                    PATICLESIZEVAR.UserID = '';
-                    PATICLESIZEVAR.InstrumentID = '';
-                    PATICLESIZEVAR.Barcode = '';
+                    PARTICLESIZEVAR.UserID = '';
+                    PARTICLESIZEVAR.InstrumentID = '';
+                    PARTICLESIZEVAR.Barcode = '';
                   });
                 },
                 child: Container(
@@ -355,8 +356,8 @@ class _PATICLESIZEMAINState extends State<PATICLESIZEMAIN> {
               InkWell(
                 onTap: () {
                   context
-                      .read<PATICLESIZEMSG_Bloc>()
-                      .add(PATICLESIZEMSG_Reject());
+                      .read<PARTICLESIZEMSG_Bloc>()
+                      .add(PARTICLESIZEMSG_Reject());
                 },
                 child: Container(
                   height: 30,

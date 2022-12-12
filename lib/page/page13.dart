@@ -24,8 +24,8 @@ class Page13BlocBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => PATICLESIZEBloc_Bloc(),
-      child: BlocBuilder<PATICLESIZEBloc_Bloc, PATICLESIZEReceive>(
+      create: (_) => PARTICLESIZEBloc_Bloc(),
+      child: BlocBuilder<PARTICLESIZEBloc_Bloc, PARTICLESIZEReceive>(
         builder: (context, data) {
           return Page13BlocMSG(
             data: data,
@@ -42,13 +42,13 @@ class Page13BlocMSG extends StatelessWidget {
     Key? key,
     this.data,
   }) : super(key: key);
-  PATICLESIZEReceive? data;
+  PARTICLESIZEReceive? data;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => PATICLESIZEMSG_Bloc(),
-      child: BlocBuilder<PATICLESIZEMSG_Bloc, String>(
+      create: (_) => PARTICLESIZEMSG_Bloc(),
+      child: BlocBuilder<PARTICLESIZEMSG_Bloc, String>(
         builder: (context, msg) {
           return Page13Body(
             data: data,
@@ -66,11 +66,14 @@ class Page13Body extends StatelessWidget {
     this.data,
     this.msg,
   }) : super(key: key);
-  PATICLESIZEReceive? data;
+  PARTICLESIZEReceive? data;
   String? msg;
 
   @override
   Widget build(BuildContext context) {
-    return PATICLESIZEMAIN();
+    return PARTICLESIZEMAIN(
+      data: data,
+      msg: msg,
+    );
   }
 }

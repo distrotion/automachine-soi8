@@ -70,6 +70,9 @@ class Page15Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ECmMAIN();
+    return ECmMAIN(
+      data: data,
+      msg: msg,
+    );
   }
 }

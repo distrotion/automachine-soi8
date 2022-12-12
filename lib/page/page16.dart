@@ -70,6 +70,9 @@ class Page16Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BOOKFEILD01MAIN();
+    return BOOKFEILD01MAIN(
+      data: data,
+      msg: msg,
+    );
   }
 }

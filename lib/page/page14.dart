@@ -70,6 +70,9 @@ class Page14Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MINIAVMAIN();
+    return MINIAVMAIN(
+      data: data,
+      msg: msg,
+    );
   }
 }

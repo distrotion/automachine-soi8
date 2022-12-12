@@ -70,6 +70,9 @@ class Page18Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PENETROMETERMAIN();
+    return PENETROMETERMAIN(
+      data: data,
+      msg: msg,
+    );
   }
 }

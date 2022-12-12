@@ -1,4 +1,4 @@
-class PATICLESIZEVAR {
+class PARTICLESIZEVAR {
   static bool iscontrol = true;
 
   static String UserID = '';

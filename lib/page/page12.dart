@@ -70,6 +70,9 @@ class Page12Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AUTOTITRATEMAIN();
+    return AUTOTITRATEMAIN(
+      data: data,
+      msg: msg,
+    );
   }
 }

@@ -14,60 +14,60 @@ import '13-1-PARTICALSIZEBloc.dart';
 //-------------------------------------------------
 String server = serverG;
 
-abstract class PATICLESIZEMSG_Event {}
+abstract class PARTICLESIZEMSG_Event {}
 
-class PATICLESIZEMSG_UserID extends PATICLESIZEMSG_Event {}
+class PARTICLESIZEMSG_UserID extends PARTICLESIZEMSG_Event {}
 
-class PATICLESIZEMSG_Instrument extends PATICLESIZEMSG_Event {}
+class PARTICLESIZEMSG_Instrument extends PARTICLESIZEMSG_Event {}
 
-class PATICLESIZEMSG_Barcode extends PATICLESIZEMSG_Event {}
+class PARTICLESIZEMSG_Barcode extends PARTICLESIZEMSG_Event {}
 
-class PATICLESIZEMSG_Select_Send extends PATICLESIZEMSG_Event {}
+class PARTICLESIZEMSG_Select_Send extends PARTICLESIZEMSG_Event {}
 
-class PATICLESIZEMSG_Reject extends PATICLESIZEMSG_Event {}
+class PARTICLESIZEMSG_Reject extends PARTICLESIZEMSG_Event {}
 
-class PATICLESIZEMSG_clear extends PATICLESIZEMSG_Event {}
+class PARTICLESIZEMSG_clear extends PARTICLESIZEMSG_Event {}
 
-class PATICLESIZEMSG_Flush extends PATICLESIZEMSG_Event {}
+class PARTICLESIZEMSG_Flush extends PARTICLESIZEMSG_Event {}
 
-class PATICLESIZEMSG_Bloc extends Bloc<PATICLESIZEMSG_Event, String> {
-  PATICLESIZEMSG_Bloc() : super('') {
-    on<PATICLESIZEMSG_UserID>((event, emit) {
-      return _PATICLESIZEMSG_UserID('', emit);
+class PARTICLESIZEMSG_Bloc extends Bloc<PARTICLESIZEMSG_Event, String> {
+  PARTICLESIZEMSG_Bloc() : super('') {
+    on<PARTICLESIZEMSG_UserID>((event, emit) {
+      return _PARTICLESIZEMSG_UserID('', emit);
     });
 
-    on<PATICLESIZEMSG_Instrument>((event, emit) {
-      return _PATICLESIZEMSG_Instrument('', emit);
+    on<PARTICLESIZEMSG_Instrument>((event, emit) {
+      return _PARTICLESIZEMSG_Instrument('', emit);
     });
 
-    on<PATICLESIZEMSG_Barcode>((event, emit) {
-      return _PATICLESIZEMSG_Barcode('', emit);
+    on<PARTICLESIZEMSG_Barcode>((event, emit) {
+      return _PARTICLESIZEMSG_Barcode('', emit);
     });
 
-    on<PATICLESIZEMSG_Select_Send>((event, emit) {
-      return _PATICLESIZEMSG_Select_Send('', emit);
+    on<PARTICLESIZEMSG_Select_Send>((event, emit) {
+      return _PARTICLESIZEMSG_Select_Send('', emit);
     });
 
-    on<PATICLESIZEMSG_Reject>((event, emit) {
-      return _PATICLESIZEMSG_Reject('', emit);
+    on<PARTICLESIZEMSG_Reject>((event, emit) {
+      return _PARTICLESIZEMSG_Reject('', emit);
     });
 
-    on<PATICLESIZEMSG_clear>((event, emit) {
-      return _PATICLESIZEMSG_clear('', emit);
+    on<PARTICLESIZEMSG_clear>((event, emit) {
+      return _PARTICLESIZEMSG_clear('', emit);
     });
 
-    on<PATICLESIZEMSG_Flush>((event, emit) {
-      return _PATICLESIZEMSG_Flush('', emit);
+    on<PARTICLESIZEMSG_Flush>((event, emit) {
+      return _PARTICLESIZEMSG_Flush('', emit);
     });
   }
-  Future<void> _PATICLESIZEMSG_UserID(
+  Future<void> _PARTICLESIZEMSG_UserID(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PATICLESIZEMAINcontext);
+    FreeLoading(PARTICLESIZEMAINcontext);
 
     final response = await Dio().post(
-      server + "setUserID_PATICLESIZE",
-      data: {"UserID": PATICLESIZEVAR.UserID},
+      server + "setUserID_PARTICLESIZE",
+      data: {"UserID": PARTICLESIZEVAR.UserID},
     );
     if (response.statusCode == 200) {
       var databuff = response.data;
@@ -81,21 +81,21 @@ class PATICLESIZEMSG_Bloc extends Bloc<PATICLESIZEMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PATICLESIZEMAINcontext);
-    PATICLESIZEMAINcontext.read<PATICLESIZEBloc_Bloc>()
-        .add(PATICLESIZEBloc_Read());
+    Navigator.pop(PARTICLESIZEMAINcontext);
+    PARTICLESIZEMAINcontext.read<PARTICLESIZEBloc_Bloc>()
+        .add(PARTICLESIZEBloc_Read());
     emit(output);
   }
 
-  Future<void> _PATICLESIZEMSG_Instrument(
+  Future<void> _PARTICLESIZEMSG_Instrument(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PATICLESIZEMAINcontext);
+    FreeLoading(PARTICLESIZEMAINcontext);
 
     final response = await Dio().post(
-      server + "setInstrumentID_PATICLESIZE",
+      server + "setInstrumentID_PARTICLESIZE",
       data: {
-        "InstrumentID": PATICLESIZEVAR.InstrumentID,
+        "InstrumentID": PARTICLESIZEVAR.InstrumentID,
       },
     );
     if (response.statusCode == 200) {
@@ -112,21 +112,21 @@ class PATICLESIZEMSG_Bloc extends Bloc<PATICLESIZEMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PATICLESIZEMAINcontext);
-    PATICLESIZEMAINcontext.read<PATICLESIZEBloc_Bloc>()
-        .add(PATICLESIZEBloc_Read());
+    Navigator.pop(PARTICLESIZEMAINcontext);
+    PARTICLESIZEMAINcontext.read<PARTICLESIZEBloc_Bloc>()
+        .add(PARTICLESIZEBloc_Read());
     emit(output);
   }
 
-  Future<void> _PATICLESIZEMSG_Barcode(
+  Future<void> _PARTICLESIZEMSG_Barcode(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PATICLESIZEMAINcontext);
+    FreeLoading(PARTICLESIZEMAINcontext);
 
     final response = await Dio().post(
-      server + "setBarcode_PATICLESIZE",
+      server + "setBarcode_PARTICLESIZE",
       data: {
-        "Barcode": PATICLESIZEVAR.Barcode,
+        "Barcode": PARTICLESIZEVAR.Barcode,
       },
     );
     if (response.statusCode == 200) {
@@ -146,19 +146,19 @@ class PATICLESIZEMSG_Bloc extends Bloc<PATICLESIZEMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PATICLESIZEMAINcontext);
-    PATICLESIZEMAINcontext.read<PATICLESIZEBloc_Bloc>()
-        .add(PATICLESIZEBloc_Read());
+    Navigator.pop(PARTICLESIZEMAINcontext);
+    PARTICLESIZEMAINcontext.read<PARTICLESIZEBloc_Bloc>()
+        .add(PARTICLESIZEBloc_Read());
     emit(output);
   }
 
-  Future<void> _PATICLESIZEMSG_Select_W1(
+  Future<void> _PARTICLESIZEMSG_Select_W1(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PATICLESIZEMAINcontext);
+    FreeLoading(PARTICLESIZEMAINcontext);
 
     final response = await Dio().post(
-      server + "PATICLESIZE_W1",
+      server + "PARTICLESIZE_W1",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -174,19 +174,19 @@ class PATICLESIZEMSG_Bloc extends Bloc<PATICLESIZEMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PATICLESIZEMAINcontext);
-    PATICLESIZEMAINcontext.read<PATICLESIZEBloc_Bloc>()
-        .add(PATICLESIZEBloc_Read());
+    Navigator.pop(PARTICLESIZEMAINcontext);
+    PARTICLESIZEMAINcontext.read<PARTICLESIZEBloc_Bloc>()
+        .add(PARTICLESIZEBloc_Read());
     emit(output);
   }
 
-  Future<void> _PATICLESIZEMSG_Select_Send(
+  Future<void> _PARTICLESIZEMSG_Select_Send(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PATICLESIZEMAINcontext);
+    FreeLoading(PARTICLESIZEMAINcontext);
 
     final response = await Dio().post(
-      server + "PATICLESIZE_SEND",
+      server + "PARTICLESIZE_SEND",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -205,19 +205,19 @@ class PATICLESIZEMSG_Bloc extends Bloc<PATICLESIZEMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PATICLESIZEMAINcontext);
-    PATICLESIZEMAINcontext.read<PATICLESIZEBloc_Bloc>()
-        .add(PATICLESIZEBloc_Read());
+    Navigator.pop(PARTICLESIZEMAINcontext);
+    PARTICLESIZEMAINcontext.read<PARTICLESIZEBloc_Bloc>()
+        .add(PARTICLESIZEBloc_Read());
     emit(output);
   }
 
-  Future<void> _PATICLESIZEMSG_Reject(
+  Future<void> _PARTICLESIZEMSG_Reject(
       String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PATICLESIZEMAINcontext);
+    FreeLoading(PARTICLESIZEMAINcontext);
 
     final response = await Dio().post(
-      server + "PATICLESIZE_REJ",
+      server + "PARTICLESIZE_REJ",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -232,18 +232,19 @@ class PATICLESIZEMSG_Bloc extends Bloc<PATICLESIZEMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PATICLESIZEMAINcontext);
-    PATICLESIZEMAINcontext.read<PATICLESIZEBloc_Bloc>()
-        .add(PATICLESIZEBloc_Read());
+    Navigator.pop(PARTICLESIZEMAINcontext);
+    PARTICLESIZEMAINcontext.read<PARTICLESIZEBloc_Bloc>()
+        .add(PARTICLESIZEBloc_Read());
     emit(output);
   }
 
-  Future<void> _PATICLESIZEMSG_clear(String toAdd, Emitter<String> emit) async {
+  Future<void> _PARTICLESIZEMSG_clear(
+      String toAdd, Emitter<String> emit) async {
     String output = '';
-    FreeLoading(PATICLESIZEMAINcontext);
+    FreeLoading(PARTICLESIZEMAINcontext);
 
     final response = await Dio().post(
-      server + "PATICLESIZE_clear",
+      server + "PARTICLESIZE_clear",
       data: {},
     );
     if (response.statusCode == 200) {
@@ -258,13 +259,14 @@ class PATICLESIZEMSG_Bloc extends Bloc<PATICLESIZEMSG_Event, String> {
       }
     }
 
-    Navigator.pop(PATICLESIZEMAINcontext);
-    PATICLESIZEMAINcontext.read<PATICLESIZEBloc_Bloc>()
-        .add(PATICLESIZEBloc_Read());
+    Navigator.pop(PARTICLESIZEMAINcontext);
+    PARTICLESIZEMAINcontext.read<PARTICLESIZEBloc_Bloc>()
+        .add(PARTICLESIZEBloc_Read());
     emit(output);
   }
 
-  Future<void> _PATICLESIZEMSG_Flush(String toAdd, Emitter<String> emit) async {
+  Future<void> _PARTICLESIZEMSG_Flush(
+      String toAdd, Emitter<String> emit) async {
     String output = '';
     emit(output);
   }
