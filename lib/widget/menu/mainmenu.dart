@@ -5,6 +5,14 @@ import '../../bloc/BlocEvent/LoginEvent.dart';
 import '../../mainBody.dart';
 import '../../page/page1.dart';
 import '../../page/page10.dart';
+import '../../page/page11.dart';
+import '../../page/page12.dart';
+import '../../page/page13.dart';
+import '../../page/page14.dart';
+import '../../page/page15.dart';
+import '../../page/page16.dart';
+import '../../page/page17.dart';
+import '../../page/page18.dart';
 import '../../page/page2.dart';
 import '../../page/page3.dart';
 import '../../page/page4.dart';
@@ -80,53 +88,109 @@ class Data_Menu_mainmenu extends StatelessWidget {
                   ),
                 ))),
         menu_normal(
-          name: "Page1",
+          name: "HOME",
           page: Page1(),
           Lv: 1,
+          Colorss: Colors.blue,
         ),
         menu_normal(
           name: "BALANCE01",
           page: Page2(),
           Lv: 1,
+          Colorss: Colors.green,
         ),
         menu_normal(
           name: "BALANCE02",
           page: Page3(),
           Lv: 1,
+          Colorss: Colors.green,
         ),
         menu_normal(
           name: "FP COC",
           page: Page4(),
           Lv: 1,
+          Colorss: Colors.green,
         ),
         menu_normal(
           name: "FP TCC",
           page: Page5(),
           Lv: 1,
+          Colorss: Colors.green,
         ),
         menu_normal(
           name: "FP SCC",
           page: Page6(),
           Lv: 1,
+          Colorss: Colors.green,
         ),
         menu_normal(
           name: "PH01",
           page: Page7(),
           Lv: 1,
+          Colorss: Colors.green,
         ),
         menu_normal(
           name: "SG",
           page: Page8(),
           Lv: 1,
+          Colorss: Colors.yellow,
         ),
         menu_normal(
           name: "DENSITY",
           page: Page9(),
           Lv: 1,
+          Colorss: Colors.yellow,
         ),
         menu_normal(
           name: "KARL",
           page: Page10(),
+          Lv: 1,
+          Colorss: Colors.green,
+        ),
+        menu_normal(
+          name: "BALANCEa",
+          page: Page11(),
+          Lv: 1,
+          Colorss: Colors.green,
+        ),
+        menu_normal(
+          name: "AUTOTRITEATE",
+          page: Page12(),
+          Lv: 1,
+          Colorss: Colors.green,
+        ),
+        menu_normal(
+          name: "PARTICALSIZE",
+          page: Page13(),
+          Lv: 1,
+          Colorss: Colors.green,
+        ),
+        menu_normal(
+          name: "MINIAV",
+          page: Page14(),
+          Lv: 1,
+          Colorss: Colors.green,
+        ),
+        menu_normal(
+          name: "EC",
+          page: Page15(),
+          Lv: 1,
+          Colorss: Colors.green,
+        ),
+        menu_normal(
+          name: "BOOKFEILD01",
+          page: Page16(),
+          Lv: 1,
+          Colorss: Colors.green,
+        ),
+        menu_normal(
+          name: "BOOKFEILD02",
+          page: Page17(),
+          Lv: 1,
+        ),
+        menu_normal(
+          name: "PENETROMETER",
+          page: Page18(),
           Lv: 1,
         ),
         menu_logout(

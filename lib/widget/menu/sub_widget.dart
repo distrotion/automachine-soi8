@@ -6,13 +6,19 @@ import '../../data/global.dart';
 import '../../mainBody.dart';
 
 class menu_normal extends StatelessWidget {
-  menu_normal(
-      {Key? key, this.name, this.icon, required this.page, required this.Lv})
-      : super(key: key);
+  menu_normal({
+    Key? key,
+    this.name,
+    this.icon,
+    required this.page,
+    required this.Lv,
+    this.Colorss,
+  }) : super(key: key);
   String? name;
   Widget page;
   String? icon;
   int Lv;
+  Color? Colorss;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +45,7 @@ class menu_normal extends StatelessWidget {
                   height: 24,
                   width: 24,
                   decoration: BoxDecoration(
-                    color: Colors.redAccent.shade400,
+                    color: Colorss ?? Colors.redAccent.shade400,
                     // image: DecorationImage(
                     //   image: AssetImage(""),
                     //   fit: BoxFit.fitWidth,
