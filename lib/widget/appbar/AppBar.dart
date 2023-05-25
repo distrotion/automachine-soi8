@@ -25,7 +25,7 @@ class _App_BarState extends State<App_Bar> {
   Widget build(BuildContext context) {
     return Container(
       height: 70,
-      width: MediaQuery.of(context).size.width,
+      // width: MediaQuery.of(context).size.width,
       color: Color(0xff0b1327),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
