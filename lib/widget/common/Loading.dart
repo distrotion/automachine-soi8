@@ -95,7 +95,7 @@ void onLoadingFAKE(BuildContext contextin) {
 void FreeLoading(BuildContext contextin) {
   showDialog(
     context: contextin,
-    barrierDismissible: false,
+    barrierDismissible: true,
     builder: (BuildContext context) {
       return Dialog(
         child: SizedBox(
