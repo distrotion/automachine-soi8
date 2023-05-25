@@ -28,11 +28,11 @@ class _App_BarState extends State<App_Bar> {
       width: MediaQuery.of(context).size.width,
       color: Color(0xff0b1327),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Logo2(),
           // Logo1(),
-          Spacer(),
+          // Spacer(),
           //Text(MediaQuery.of(context).size.width.toString()),
           //Text("  |  <--->  |  " + current_page.toString()),
           // Spacer(),
