@@ -42,8 +42,7 @@ class _MainMenuState extends State<MainMenu> {
       height: (MediaQuery.of(context).size.height),
       // width: MediaQuery.of(context).size.width,
       width: 200,
-      // color: const Color(0xff0b1327),
-      color: Color.fromARGB(255, 9, 182, 27),
+      color: const Color(0xff0b1327),
       //color: Colors.red,
       child: ListView(
         children: [

@@ -36,7 +36,7 @@ class _App_BarState extends State<App_Bar> {
           //Text(MediaQuery.of(context).size.width.toString()),
           //Text("  |  <--->  |  " + current_page.toString()),
           // Spacer(),
-          Pack_topright_bar(),
+          // Pack_topright_bar(),
         ],
       ),
     );
