@@ -39,7 +39,7 @@ class ChangePage_Bloc extends Bloc<ChangePage_Event, Widget> {
     //   // BlocProvider.of<BlocNotification>(contextGB)
     //   //     .UpdateNotification("", "Error", enumNotificationlist.Error);
 
-    Navigator.pop(MenuContext);
+    // Navigator.pop(MenuContext);
     // print(output);
     emit(CuPage);
   }
