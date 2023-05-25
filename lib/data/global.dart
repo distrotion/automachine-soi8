@@ -18,4 +18,4 @@ class logindata {
 }
 
 String serverG = "http://172.101.33.188:1880/";
-// String serverG = "http://201.103.1.50:1880/"; 
+// String serverG = "http://201.103.1.50:1880/";
